@@ -1,0 +1,1328 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+    
+    
+      
+        <title>BioCircos.js(eQTL的circos图) - Web learn</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8b42a75e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Web learn" class="md-header__button md-logo" aria-label="Web learn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Web learn
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              BioCircos.js(eQTL的circos图)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../html_css/html_css/" class="md-tabs__link">
+        HTML/CSS
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../js/" class="md-tabs__link md-tabs__link--active">
+        JavaScript
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../php/php/" class="md-tabs__link">
+        PHP
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../mysql/mysql/" class="md-tabs__link">
+      MySQL
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../linux/linux/" class="md-tabs__link">
+      Linux
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../more/user_inter/" class="md-tabs__link">
+        More
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Web learn" class="md-nav__button md-logo" aria-label="Web learn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Web learn
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          HTML/CSS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HTML/CSS" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          HTML/CSS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../html_css/html_css/" class="md-nav__link">
+        HTML/CSS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../html_css/bootstrap/" class="md-nav__link">
+        Bootstrap3
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          JavaScript
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="JavaScript" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          JavaScript
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js/" class="md-nav__link">
+        JavaScript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jquery/" class="md-nav__link">
+        jQuery
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Vue/" class="md-nav__link">
+        Vue.js
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../element/" class="md-nav__link">
+        ElementUI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quasar/" class="md-nav__link">
+        Quasar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../echarts/" class="md-nav__link">
+        Echarts(基本图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../amcharts/" class="md-nav__link">
+        amCharts(地图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plotly/" class="md-nav__link">
+        plotly.js(小提琴图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../highcharts/" class="md-nav__link">
+        Highcharts(基因结构图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phylotree/" class="md-nav__link">
+        Phylotree.js(绘制进化树)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cytoscape/" class="md-nav__link">
+        Cytoscape.js(网络图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gtex_viz/" class="md-nav__link">
+        gtex-viz(带聚类树的热图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          BioCircos.js(eQTL的circos图)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        BioCircos.js(eQTL的circos图)
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          PHP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="PHP" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          PHP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../php/php/" class="md-nav__link">
+        PHP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../php/tp/" class="md-nav__link">
+        ThinkPHP
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mysql/mysql/" class="md-nav__link">
+        MySQL
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/linux/" class="md-nav__link">
+        Linux
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          More
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="More" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          More
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/user_inter/" class="md-nav__link">
+        异常检测、提交反馈
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/jbrowse1/" class="md-nav__link">
+        JBrowse1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/jbrowse2/" class="md-nav__link">
+        JBrowse2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/blast/" class="md-nav__link">
+        Blast
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/gbrowse/" class="md-nav__link">
+        GBrowse_syn
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>BioCircos.js(eQTL的circos图)</h1>
+                
+                <p>官网: <a href="http://bioinfo.ibp.ac.cn/biocircos/">http://bioinfo.ibp.ac.cn/biocircos/</a></p>
+<h2 id="_1">示例<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
+<p><img alt="circos图" src="../../images/circos.png" /></p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">JavaScript</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf8&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://code.jquery.com/jquery-1.10.2.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf8&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://yanglab.hzau.edu.cn/static/js/biocircos/d3.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf8&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://yanglab.hzau.edu.cn/static/js/biocircos/biocircos-1.0.0.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;biocircos&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//snp</span>
+    <span class="kd">var</span> <span class="nx">snp</span> <span class="o">=</span> <span class="p">[{</span> <span class="s2">&quot;chr&quot;</span><span class="o">:</span> <span class="s2">&quot;A06&quot;</span><span class="p">,</span> <span class="s2">&quot;pos&quot;</span><span class="o">:</span> <span class="mf">80162862</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="mf">4.597351e-9</span> <span class="p">},</span> <span class="p">{</span> <span class="s2">&quot;chr&quot;</span><span class="o">:</span> <span class="s2">&quot;A06&quot;</span><span class="p">,</span> <span class="s2">&quot;pos&quot;</span><span class="o">:</span> <span class="mf">80382049</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="mf">2.512427e-18</span> <span class="p">},</span> <span class="p">{</span> <span class="s2">&quot;chr&quot;</span><span class="o">:</span> <span class="s2">&quot;A06&quot;</span><span class="p">,</span> <span class="s2">&quot;pos&quot;</span><span class="o">:</span> <span class="mf">80382082</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="mf">7.497095e-11</span> <span class="p">},</span> <span class="p">{</span> <span class="s2">&quot;chr&quot;</span><span class="o">:</span> <span class="s2">&quot;A06&quot;</span><span class="p">,</span> <span class="s2">&quot;pos&quot;</span><span class="o">:</span> <span class="mf">80816183</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="mf">4.830162e-7</span> <span class="p">},</span> <span class="p">{</span> <span class="s2">&quot;chr&quot;</span><span class="o">:</span> <span class="s2">&quot;A06&quot;</span><span class="p">,</span> <span class="s2">&quot;pos&quot;</span><span class="o">:</span> <span class="mf">81573164</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="mf">3.202536e-7</span> <span class="p">},</span> <span class="p">{</span> <span class="s2">&quot;chr&quot;</span><span class="o">:</span> <span class="s2">&quot;A06&quot;</span><span class="p">,</span> <span class="s2">&quot;pos&quot;</span><span class="o">:</span> <span class="mf">82262582</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="mf">9.473178e-13</span> <span class="p">},</span> <span class="p">{</span> <span class="s2">&quot;chr&quot;</span><span class="o">:</span> <span class="s2">&quot;A06&quot;</span><span class="p">,</span> <span class="s2">&quot;pos&quot;</span><span class="o">:</span> <span class="mf">82262615</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="mf">6.441989e-12</span> <span class="p">}];</span>
+    <span class="c1">//gene</span>
+    <span class="kd">var</span> <span class="nx">gene</span> <span class="o">=</span> <span class="p">[{</span> <span class="s2">&quot;chr&quot;</span><span class="o">:</span> <span class="s2">&quot;A01&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="mf">268599</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="mf">269169</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A01G00146&quot;</span><span class="p">,</span> <span class="s2">&quot;des&quot;</span><span class="o">:</span> <span class="s2">&quot;gene&quot;</span> <span class="p">}];</span>
+    <span class="c1">//eQTL</span>
+    <span class="kd">var</span> <span class="nx">links</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">link_A06</span><span class="o">:</span> <span class="p">[{</span> <span class="s2">&quot;fusion&quot;</span><span class="o">:</span> <span class="s2">&quot;GhiA06080162862SNV--Ghi_A01G00146&quot;</span><span class="p">,</span> <span class="s2">&quot;g1chr&quot;</span><span class="o">:</span> <span class="s2">&quot;A06&quot;</span><span class="p">,</span> <span class="s2">&quot;g1start&quot;</span><span class="o">:</span> <span class="mf">80162862</span><span class="p">,</span> <span class="s2">&quot;g1end&quot;</span><span class="o">:</span> <span class="mf">80162862</span><span class="p">,</span> <span class="s2">&quot;g1name&quot;</span><span class="o">:</span> <span class="s2">&quot;GhiA06080162862SNV&quot;</span><span class="p">,</span> <span class="s2">&quot;g2chr&quot;</span><span class="o">:</span> <span class="s2">&quot;A01&quot;</span><span class="p">,</span> <span class="s2">&quot;g2start&quot;</span><span class="o">:</span> <span class="mf">268599</span><span class="p">,</span> <span class="s2">&quot;g2end&quot;</span><span class="o">:</span> <span class="mf">269169</span><span class="p">,</span> <span class="s2">&quot;g2name&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A01G00146&quot;</span> <span class="p">}],</span>
+      <span class="nx">link_A13</span><span class="o">:</span> <span class="p">[{</span> <span class="s2">&quot;fusion&quot;</span><span class="o">:</span> <span class="s2">&quot;GhiA13001987716SNV--Ghi_A01G00146&quot;</span><span class="p">,</span> <span class="s2">&quot;g1chr&quot;</span><span class="o">:</span> <span class="s2">&quot;A13&quot;</span><span class="p">,</span> <span class="s2">&quot;g1start&quot;</span><span class="o">:</span> <span class="mf">1987716</span><span class="p">,</span> <span class="s2">&quot;g1end&quot;</span><span class="o">:</span> <span class="mf">1987716</span><span class="p">,</span> <span class="s2">&quot;g1name&quot;</span><span class="o">:</span> <span class="s2">&quot;GhiA13001987716SNV&quot;</span><span class="p">,</span> <span class="s2">&quot;g2chr&quot;</span><span class="o">:</span> <span class="s2">&quot;A01&quot;</span><span class="p">,</span> <span class="s2">&quot;g2start&quot;</span><span class="o">:</span> <span class="mf">268599</span><span class="p">,</span> <span class="s2">&quot;g2end&quot;</span><span class="o">:</span> <span class="mf">269169</span><span class="p">,</span> <span class="s2">&quot;g2name&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A01G00146&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="s2">&quot;fusion&quot;</span><span class="o">:</span> <span class="s2">&quot;GhiA13013198950SNV--Ghi_A01G00146&quot;</span><span class="p">,</span> <span class="s2">&quot;g1chr&quot;</span><span class="o">:</span> <span class="s2">&quot;A13&quot;</span><span class="p">,</span> <span class="s2">&quot;g1start&quot;</span><span class="o">:</span> <span class="mf">13198950</span><span class="p">,</span> <span class="s2">&quot;g1end&quot;</span><span class="o">:</span> <span class="mf">13198950</span><span class="p">,</span> <span class="s2">&quot;g1name&quot;</span><span class="o">:</span> <span class="s2">&quot;GhiA13013198950SNV&quot;</span><span class="p">,</span> <span class="s2">&quot;g2chr&quot;</span><span class="o">:</span> <span class="s2">&quot;A01&quot;</span><span class="p">,</span> <span class="s2">&quot;g2start&quot;</span><span class="o">:</span> <span class="mf">268599</span><span class="p">,</span> <span class="s2">&quot;g2end&quot;</span><span class="o">:</span> <span class="mf">269169</span><span class="p">,</span> <span class="s2">&quot;g2name&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A01G00146&quot;</span> <span class="p">}]</span>
+    <span class="p">}</span>
+    <span class="c1">//染色体名以及长度</span>
+    <span class="kd">var</span> <span class="nx">BioCircosGenome</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="p">[</span><span class="s2">&quot;A01&quot;</span><span class="p">,</span> <span class="mf">112029331</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;A02&quot;</span><span class="p">,</span> <span class="mf">106041875</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;A03&quot;</span><span class="p">,</span> <span class="mf">116396180</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;A04&quot;</span><span class="p">,</span> <span class="mf">85730437</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;A05&quot;</span><span class="p">,</span> <span class="mf">115727996</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;A06&quot;</span><span class="p">,</span> <span class="mf">128492809</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;A07&quot;</span><span class="p">,</span> <span class="mf">97995491</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;A08&quot;</span><span class="p">,</span> <span class="mf">126020840</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;A09&quot;</span><span class="p">,</span> <span class="mf">86502437</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;A10&quot;</span><span class="p">,</span> <span class="mf">121967758</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;A11&quot;</span><span class="p">,</span> <span class="mf">127558678</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;A12&quot;</span><span class="p">,</span> <span class="mf">111633091</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;A13&quot;</span><span class="p">,</span> <span class="mf">112716876</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;D01&quot;</span><span class="p">,</span> <span class="mf">63508995</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;D02&quot;</span><span class="p">,</span> <span class="mf">71698750</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;D03&quot;</span><span class="p">,</span> <span class="mf">56140004</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;D04&quot;</span><span class="p">,</span> <span class="mf">57942221</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;D05&quot;</span><span class="p">,</span> <span class="mf">54532635</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;D06&quot;</span><span class="p">,</span> <span class="mf">68799799</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;D07&quot;</span><span class="p">,</span> <span class="mf">59181855</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;D08&quot;</span><span class="p">,</span> <span class="mf">66890076</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;D09&quot;</span><span class="p">,</span> <span class="mf">50155903</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;D10&quot;</span><span class="p">,</span> <span class="mf">68123451</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;D11&quot;</span><span class="p">,</span> <span class="mf">72227647</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;D12&quot;</span><span class="p">,</span> <span class="mf">68832472</span><span class="p">],</span>
+      <span class="p">[</span><span class="s2">&quot;D13&quot;</span><span class="p">,</span> <span class="mf">64550653</span><span class="p">]</span>
+    <span class="p">];</span>
+    <span class="kd">var</span> <span class="nx">BACKGROUND01</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;BACKGROUND01&quot;</span><span class="p">,</span> <span class="p">{</span>
+      <span class="nx">BginnerRadius</span><span class="o">:</span> <span class="mf">140</span><span class="p">,</span>
+      <span class="nx">BgouterRadius</span><span class="o">:</span> <span class="mf">115</span><span class="p">,</span>
+      <span class="nx">BgFillColor</span><span class="o">:</span> <span class="s2">&quot;#F2F2F2&quot;</span><span class="p">,</span>
+      <span class="nx">BgborderColor</span><span class="o">:</span> <span class="s2">&quot;#000&quot;</span><span class="p">,</span>
+      <span class="nx">BgborderSize</span><span class="o">:</span> <span class="mf">0.3</span>
+    <span class="p">}];</span>
+    <span class="kd">var</span> <span class="nx">SNP01</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;SNP01&quot;</span><span class="p">,</span> <span class="p">{</span>
+      <span class="nx">maxRadius</span><span class="o">:</span> <span class="mf">138</span><span class="p">,</span>
+      <span class="nx">minRadius</span><span class="o">:</span> <span class="mf">117</span><span class="p">,</span>
+      <span class="nx">SNPFillColor</span><span class="o">:</span> <span class="s2">&quot;#9400D3&quot;</span><span class="p">,</span>
+      <span class="nx">PointType</span><span class="o">:</span> <span class="s2">&quot;rect&quot;</span><span class="p">,</span>
+      <span class="nx">circleSize</span><span class="o">:</span> <span class="mf">2</span><span class="p">,</span>
+      <span class="nx">displaySNPAxis</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">SNPAxisColor</span><span class="o">:</span> <span class="s2">&quot;#B8B8B8&quot;</span><span class="p">,</span>
+      <span class="nx">SNPAxisWidth</span><span class="o">:</span> <span class="mf">0.5</span>
+    <span class="p">},</span> <span class="nx">snp</span>
+    <span class="p">];</span>
+    <span class="kd">var</span> <span class="nx">SCATTER01</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;SCATTER01&quot;</span><span class="p">,</span> <span class="p">{</span>
+      <span class="nx">SCATTERRadius</span><span class="o">:</span> <span class="mf">155</span><span class="p">,</span>
+      <span class="nx">innerCircleSize</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+      <span class="nx">outerCircleSize</span><span class="o">:</span> <span class="mf">7</span><span class="p">,</span>
+      <span class="nx">innerCircleColor</span><span class="o">:</span> <span class="s2">&quot;#7876B1&quot;</span><span class="p">,</span>
+      <span class="nx">outerCircleColor</span><span class="o">:</span> <span class="s2">&quot;#7876B1&quot;</span><span class="p">,</span>
+      <span class="nx">random_data</span><span class="o">:</span> <span class="mf">0</span>
+    <span class="p">},</span> <span class="nx">gene</span>
+    <span class="p">];</span>
+    <span class="c1">//按染色体不同,绘制不同颜色的link</span>
+    <span class="kd">var</span> <span class="nx">LINK01</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;LINK01&quot;</span><span class="p">,</span> <span class="p">{</span>
+      <span class="nx">LinkRadius</span><span class="o">:</span> <span class="mf">115</span><span class="p">,</span>
+      <span class="nx">LinkFillColor</span><span class="o">:</span> <span class="s2">&quot;#996600&quot;</span><span class="p">,</span>
+      <span class="nx">LinkWidth</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+      <span class="nx">displayLinkAxis</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">LinkAxisColor</span><span class="o">:</span> <span class="s2">&quot;#B8B8B8&quot;</span><span class="p">,</span>
+      <span class="nx">LinkAxisWidth</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
+      <span class="nx">LinkAxisPad</span><span class="o">:</span> <span class="mf">3</span><span class="p">,</span>
+      <span class="nx">displayLinkLabel</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">LinkLabelColor</span><span class="o">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+      <span class="nx">LinkLabelSize</span><span class="o">:</span> <span class="mf">13</span><span class="p">,</span>
+      <span class="nx">LinkLabelPad</span><span class="o">:</span> <span class="mf">8</span><span class="p">,</span>
+    <span class="p">},</span> <span class="p">[]</span>
+    <span class="p">];</span>
+    <span class="kd">function</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">orign</span><span class="p">,</span> <span class="nx">copied</span><span class="p">,</span> <span class="nx">color</span><span class="p">,</span> <span class="nx">link</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">temp</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="p">{},</span> <span class="nx">orign</span><span class="p">);</span>
+      <span class="nx">temp</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">copied</span><span class="p">;</span>
+      <span class="nx">temp</span><span class="p">[</span><span class="mf">1</span><span class="p">][</span><span class="s1">&#39;LinkFillColor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">color</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">link</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">temp</span><span class="p">[</span><span class="mf">2</span><span class="p">]</span> <span class="o">=</span> <span class="nx">link</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">temp</span><span class="p">[</span><span class="mf">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="nx">temp</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_A01&#39;</span><span class="p">])</span> <span class="p">{</span>
+      <span class="nx">LINK01</span><span class="p">[</span><span class="mf">2</span><span class="p">]</span> <span class="o">=</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_A01&#39;</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="nx">LINK02</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK02&#39;</span><span class="p">,</span> <span class="s1">&#39;#666600&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_A02&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK03</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK03&#39;</span><span class="p">,</span> <span class="s1">&#39;#99991E&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_A03&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK04</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK04&#39;</span><span class="p">,</span> <span class="s1">&#39;#CC0000&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_A04&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK05</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK05&#39;</span><span class="p">,</span> <span class="s1">&#39;#FF0000&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_A05&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK06</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK06&#39;</span><span class="p">,</span> <span class="s1">&#39;#FF00CC&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_A06&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK07</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK07&#39;</span><span class="p">,</span> <span class="s1">&#39;#FFCCCC&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_A07&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK08</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK08&#39;</span><span class="p">,</span> <span class="s1">&#39;#FF9900&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_A08&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK09</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK09&#39;</span><span class="p">,</span> <span class="s1">&#39;#FFCC00&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_A09&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK10</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK10&#39;</span><span class="p">,</span> <span class="s1">&#39;#FFFF00&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_A10&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK11</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK11&#39;</span><span class="p">,</span> <span class="s1">&#39;#CCFF00&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_A11&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK12</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK12&#39;</span><span class="p">,</span> <span class="s1">&#39;#00FF00&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_A12&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK13</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK13&#39;</span><span class="p">,</span> <span class="s1">&#39;#358000&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_A13&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK14</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK14&#39;</span><span class="p">,</span> <span class="s1">&#39;#0000CC&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_D01&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK15</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK15&#39;</span><span class="p">,</span> <span class="s1">&#39;#6699FF&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_D02&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK16</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK16&#39;</span><span class="p">,</span> <span class="s1">&#39;#99CCFF&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_D03&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK17</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK17&#39;</span><span class="p">,</span> <span class="s1">&#39;#00FFFF&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_D04&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK18</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK18&#39;</span><span class="p">,</span> <span class="s1">&#39;#CCFFFF&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_D05&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK19</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK19&#39;</span><span class="p">,</span> <span class="s1">&#39;#9900CC&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_D06&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK20</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK20&#39;</span><span class="p">,</span> <span class="s1">&#39;#CC33FF&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_D07&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK21</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK21&#39;</span><span class="p">,</span> <span class="s1">&#39;#CC99FF&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_D08&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK22</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK22&#39;</span><span class="p">,</span> <span class="s1">&#39;#666666&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_D09&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK23</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK23&#39;</span><span class="p">,</span> <span class="s1">&#39;#999999&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_D10&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK24</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK24&#39;</span><span class="p">,</span> <span class="s1">&#39;#CCCCCC&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_D11&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK25</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK25&#39;</span><span class="p">,</span> <span class="s1">&#39;#996600&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_D12&#39;</span><span class="p">]);</span>
+    <span class="nx">LINK26</span> <span class="o">=</span> <span class="nx">create_link</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="s1">&#39;LINK26&#39;</span><span class="p">,</span> <span class="s1">&#39;#666600&#39;</span><span class="p">,</span> <span class="nx">links</span><span class="p">[</span><span class="s1">&#39;link_D13&#39;</span><span class="p">]);</span>
+    <span class="nx">BioCircos01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BioCircos</span><span class="p">(</span><span class="nx">LINK01</span><span class="p">,</span> <span class="nx">LINK02</span><span class="p">,</span> <span class="nx">LINK03</span><span class="p">,</span> <span class="nx">LINK04</span><span class="p">,</span> <span class="nx">LINK05</span><span class="p">,</span> <span class="nx">LINK06</span><span class="p">,</span> <span class="nx">LINK07</span><span class="p">,</span>
+      <span class="nx">LINK08</span><span class="p">,</span> <span class="nx">LINK09</span><span class="p">,</span> <span class="nx">LINK10</span><span class="p">,</span> <span class="nx">LINK11</span><span class="p">,</span> <span class="nx">LINK12</span><span class="p">,</span> <span class="nx">LINK13</span><span class="p">,</span> <span class="nx">LINK14</span><span class="p">,</span> <span class="nx">LINK15</span><span class="p">,</span> <span class="nx">LINK16</span><span class="p">,</span> <span class="nx">LINK17</span><span class="p">,</span> <span class="nx">LINK18</span><span class="p">,</span> <span class="nx">LINK19</span><span class="p">,</span>
+      <span class="nx">LINK20</span><span class="p">,</span> <span class="nx">LINK21</span><span class="p">,</span> <span class="nx">LINK22</span><span class="p">,</span> <span class="nx">LINK23</span><span class="p">,</span> <span class="nx">LINK24</span><span class="p">,</span> <span class="nx">LINK25</span><span class="p">,</span> <span class="nx">LINK26</span><span class="p">,</span> <span class="nx">BACKGROUND01</span><span class="p">,</span> <span class="nx">SNP01</span><span class="p">,</span> <span class="nx">SCATTER01</span><span class="p">,</span> <span class="nx">BioCircosGenome</span><span class="p">,</span> <span class="p">{</span>
+      <span class="nx">target</span><span class="o">:</span> <span class="s2">&quot;biocircos&quot;</span><span class="p">,</span>
+      <span class="nx">svgWidth</span><span class="o">:</span> <span class="mf">600</span><span class="p">,</span>
+      <span class="nx">svgHeight</span><span class="o">:</span> <span class="mf">450</span><span class="p">,</span>
+      <span class="nx">chrPad</span><span class="o">:</span> <span class="mf">0.04</span><span class="p">,</span>
+      <span class="nx">innerRadius</span><span class="o">:</span> <span class="mf">170</span><span class="p">,</span>
+      <span class="nx">outerRadius</span><span class="o">:</span> <span class="mf">180</span><span class="p">,</span>
+      <span class="nx">ARCMouseOnDisplay</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">SNPMouseOnDisplay</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">LINKMouseOnDisplay</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">});</span>
+    <span class="nx">BioCircos01</span><span class="p">.</span><span class="nx">draw_genome</span><span class="p">(</span><span class="nx">BioCircos01</span><span class="p">.</span><span class="nx">genomeLength</span><span class="p">);</span>
+  <span class="p">})</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Vue</label><div class="tabbed-content">
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>以下示例中, biocircos-vue.js存放在public/js中。<br />
+biocircos-vue.js文件使用<a href="http://yanglab.hzau.edu.cn/static/js/biocircos-vue.js">http://yanglab.hzau.edu.cn/static/js/biocircos-vue.js</a>。  </p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;biocircos&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="cm">/* eslint-disable */</span>
+<span class="kd">const</span> <span class="nx">d3</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;d3&#39;</span><span class="p">)</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">BioCircos</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;@/../public/js/biocircos-vue.js&#39;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;example&#39;</span><span class="p">,</span>
+  <span class="nx">components</span><span class="o">:</span> <span class="p">{},</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">snp</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span> <span class="nx">chr</span><span class="o">:</span> <span class="s1">&#39;A06&#39;</span><span class="p">,</span> <span class="nx">pos</span><span class="o">:</span> <span class="mf">80162862</span><span class="p">,</span> <span class="nx">value</span><span class="o">:</span> <span class="mf">4.597351e-9</span> <span class="p">},</span>
+          <span class="p">{</span> <span class="nx">chr</span><span class="o">:</span> <span class="s1">&#39;A06&#39;</span><span class="p">,</span> <span class="nx">pos</span><span class="o">:</span> <span class="mf">80382049</span><span class="p">,</span> <span class="nx">value</span><span class="o">:</span> <span class="mf">2.512427e-18</span> <span class="p">},</span>
+          <span class="p">{</span> <span class="nx">chr</span><span class="o">:</span> <span class="s1">&#39;A06&#39;</span><span class="p">,</span> <span class="nx">pos</span><span class="o">:</span> <span class="mf">80382082</span><span class="p">,</span> <span class="nx">value</span><span class="o">:</span> <span class="mf">7.497095e-11</span> <span class="p">},</span>
+          <span class="p">{</span> <span class="nx">chr</span><span class="o">:</span> <span class="s1">&#39;A06&#39;</span><span class="p">,</span> <span class="nx">pos</span><span class="o">:</span> <span class="mf">80816183</span><span class="p">,</span> <span class="nx">value</span><span class="o">:</span> <span class="mf">4.830162e-7</span> <span class="p">},</span>
+          <span class="p">{</span> <span class="nx">chr</span><span class="o">:</span> <span class="s1">&#39;A06&#39;</span><span class="p">,</span> <span class="nx">pos</span><span class="o">:</span> <span class="mf">81573164</span><span class="p">,</span> <span class="nx">value</span><span class="o">:</span> <span class="mf">3.202536e-7</span> <span class="p">},</span>
+          <span class="p">{</span> <span class="nx">chr</span><span class="o">:</span> <span class="s1">&#39;A06&#39;</span><span class="p">,</span> <span class="nx">pos</span><span class="o">:</span> <span class="mf">82262582</span><span class="p">,</span> <span class="nx">value</span><span class="o">:</span> <span class="mf">9.473178e-13</span> <span class="p">},</span>
+          <span class="p">{</span> <span class="nx">chr</span><span class="o">:</span> <span class="s1">&#39;A06&#39;</span><span class="p">,</span> <span class="nx">pos</span><span class="o">:</span> <span class="mf">82262615</span><span class="p">,</span> <span class="nx">value</span><span class="o">:</span> <span class="mf">6.441989e-12</span> <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nx">gene</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nx">chr</span><span class="o">:</span> <span class="s1">&#39;A01&#39;</span><span class="p">,</span>
+            <span class="nx">start</span><span class="o">:</span> <span class="mf">268599</span><span class="p">,</span>
+            <span class="nx">end</span><span class="o">:</span> <span class="mf">269169</span><span class="p">,</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Ghi_A01G00146&#39;</span><span class="p">,</span>
+            <span class="nx">des</span><span class="o">:</span> <span class="s1">&#39;gene&#39;</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nx">link_A06</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nx">fusion</span><span class="o">:</span> <span class="s1">&#39;GhiA06080162862SNV--Ghi_A01G00146&#39;</span><span class="p">,</span>
+            <span class="nx">g1chr</span><span class="o">:</span> <span class="s1">&#39;A06&#39;</span><span class="p">,</span>
+            <span class="nx">g1start</span><span class="o">:</span> <span class="mf">80162862</span><span class="p">,</span>
+            <span class="nx">g1end</span><span class="o">:</span> <span class="mf">80162862</span><span class="p">,</span>
+            <span class="nx">g1name</span><span class="o">:</span> <span class="s1">&#39;GhiA06080162862SNV&#39;</span><span class="p">,</span>
+            <span class="nx">g2chr</span><span class="o">:</span> <span class="s1">&#39;A01&#39;</span><span class="p">,</span>
+            <span class="nx">g2start</span><span class="o">:</span> <span class="mf">268599</span><span class="p">,</span>
+            <span class="nx">g2end</span><span class="o">:</span> <span class="mf">269169</span><span class="p">,</span>
+            <span class="nx">g2name</span><span class="o">:</span> <span class="s1">&#39;Ghi_A01G00146&#39;</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nx">link_A13</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nx">fusion</span><span class="o">:</span> <span class="s1">&#39;GhiA13001987716SNV--Ghi_A01G00146&#39;</span><span class="p">,</span>
+            <span class="nx">g1chr</span><span class="o">:</span> <span class="s1">&#39;A13&#39;</span><span class="p">,</span>
+            <span class="nx">g1start</span><span class="o">:</span> <span class="mf">1987716</span><span class="p">,</span>
+            <span class="nx">g1end</span><span class="o">:</span> <span class="mf">1987716</span><span class="p">,</span>
+            <span class="nx">g1name</span><span class="o">:</span> <span class="s1">&#39;GhiA13001987716SNV&#39;</span><span class="p">,</span>
+            <span class="nx">g2chr</span><span class="o">:</span> <span class="s1">&#39;A01&#39;</span><span class="p">,</span>
+            <span class="nx">g2start</span><span class="o">:</span> <span class="mf">268599</span><span class="p">,</span>
+            <span class="nx">g2end</span><span class="o">:</span> <span class="mf">269169</span><span class="p">,</span>
+            <span class="nx">g2name</span><span class="o">:</span> <span class="s1">&#39;Ghi_A01G00146&#39;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nx">fusion</span><span class="o">:</span> <span class="s1">&#39;GhiA13013198950SNV--Ghi_A01G00146&#39;</span><span class="p">,</span>
+            <span class="nx">g1chr</span><span class="o">:</span> <span class="s1">&#39;A13&#39;</span><span class="p">,</span>
+            <span class="nx">g1start</span><span class="o">:</span> <span class="mf">13198950</span><span class="p">,</span>
+            <span class="nx">g1end</span><span class="o">:</span> <span class="mf">13198950</span><span class="p">,</span>
+            <span class="nx">g1name</span><span class="o">:</span> <span class="s1">&#39;GhiA13013198950SNV&#39;</span><span class="p">,</span>
+            <span class="nx">g2chr</span><span class="o">:</span> <span class="s1">&#39;A01&#39;</span><span class="p">,</span>
+            <span class="nx">g2start</span><span class="o">:</span> <span class="mf">268599</span><span class="p">,</span>
+            <span class="nx">g2end</span><span class="o">:</span> <span class="mf">269169</span><span class="p">,</span>
+            <span class="nx">g2name</span><span class="o">:</span> <span class="s1">&#39;Ghi_A01G00146&#39;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">mounted</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$nextTick</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">draw</span><span class="p">()</span>
+    <span class="p">})</span>
+  <span class="p">},</span>
+  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">LINK</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="kd">var</span> <span class="nx">SNP01</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;SNP01&#39;</span><span class="p">,</span>
+        <span class="p">{</span>
+          <span class="nx">maxRadius</span><span class="o">:</span> <span class="mf">138</span><span class="p">,</span>
+          <span class="nx">minRadius</span><span class="o">:</span> <span class="mf">117</span><span class="p">,</span>
+          <span class="nx">SNPFillColor</span><span class="o">:</span> <span class="s1">&#39;#9400D3&#39;</span><span class="p">,</span>
+          <span class="nx">PointType</span><span class="o">:</span> <span class="s1">&#39;rect&#39;</span><span class="p">,</span>
+          <span class="nx">circleSize</span><span class="o">:</span> <span class="mf">2</span><span class="p">,</span>
+          <span class="nx">displaySNPAxis</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="nx">SNPAxisColor</span><span class="o">:</span> <span class="s1">&#39;#B8B8B8&#39;</span><span class="p">,</span>
+          <span class="nx">SNPAxisWidth</span><span class="o">:</span> <span class="mf">0.5</span>
+        <span class="p">},</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">snp</span>
+      <span class="p">]</span>
+      <span class="kd">var</span> <span class="nx">SCATTER01</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;SCATTER01&#39;</span><span class="p">,</span>
+        <span class="p">{</span>
+          <span class="nx">SCATTERRadius</span><span class="o">:</span> <span class="mf">155</span><span class="p">,</span>
+          <span class="nx">innerCircleSize</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+          <span class="nx">outerCircleSize</span><span class="o">:</span> <span class="mf">7</span><span class="p">,</span>
+          <span class="nx">innerCircleColor</span><span class="o">:</span> <span class="s1">&#39;#7876B1&#39;</span><span class="p">,</span>
+          <span class="nx">outerCircleColor</span><span class="o">:</span> <span class="s1">&#39;#7876B1&#39;</span><span class="p">,</span>
+          <span class="nx">random_data</span><span class="o">:</span> <span class="mf">0</span>
+        <span class="p">},</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">gene</span>
+      <span class="p">]</span>
+      <span class="kd">var</span> <span class="nx">BACKGROUND01</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;BACKGROUND01&#39;</span><span class="p">,</span>
+        <span class="p">{</span>
+          <span class="nx">BginnerRadius</span><span class="o">:</span> <span class="mf">140</span><span class="p">,</span>
+          <span class="nx">BgouterRadius</span><span class="o">:</span> <span class="mf">115</span><span class="p">,</span>
+          <span class="nx">BgFillColor</span><span class="o">:</span> <span class="s1">&#39;#F2F2F2&#39;</span><span class="p">,</span>
+          <span class="nx">BgborderColor</span><span class="o">:</span> <span class="s1">&#39;#000&#39;</span><span class="p">,</span>
+          <span class="nx">BgborderSize</span><span class="o">:</span> <span class="mf">0.3</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+      <span class="c1">//染色体名以及长度</span>
+      <span class="kd">var</span> <span class="nx">BioCircosGenome</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">&#39;A01&#39;</span><span class="p">,</span> <span class="mf">112029331</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;A02&#39;</span><span class="p">,</span> <span class="mf">106041875</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;A03&#39;</span><span class="p">,</span> <span class="mf">116396180</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;A04&#39;</span><span class="p">,</span> <span class="mf">85730437</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;A05&#39;</span><span class="p">,</span> <span class="mf">115727996</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;A06&#39;</span><span class="p">,</span> <span class="mf">128492809</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;A07&#39;</span><span class="p">,</span> <span class="mf">97995491</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;A08&#39;</span><span class="p">,</span> <span class="mf">126020840</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;A09&#39;</span><span class="p">,</span> <span class="mf">86502437</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;A10&#39;</span><span class="p">,</span> <span class="mf">121967758</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;A11&#39;</span><span class="p">,</span> <span class="mf">127558678</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;A12&#39;</span><span class="p">,</span> <span class="mf">111633091</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;A13&#39;</span><span class="p">,</span> <span class="mf">112716876</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;D01&#39;</span><span class="p">,</span> <span class="mf">63508995</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;D02&#39;</span><span class="p">,</span> <span class="mf">71698750</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;D03&#39;</span><span class="p">,</span> <span class="mf">56140004</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;D04&#39;</span><span class="p">,</span> <span class="mf">57942221</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;D05&#39;</span><span class="p">,</span> <span class="mf">54532635</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;D06&#39;</span><span class="p">,</span> <span class="mf">68799799</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;D07&#39;</span><span class="p">,</span> <span class="mf">59181855</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;D08&#39;</span><span class="p">,</span> <span class="mf">66890076</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;D09&#39;</span><span class="p">,</span> <span class="mf">50155903</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;D10&#39;</span><span class="p">,</span> <span class="mf">68123451</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;D11&#39;</span><span class="p">,</span> <span class="mf">72227647</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;D12&#39;</span><span class="p">,</span> <span class="mf">68832472</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;D13&#39;</span><span class="p">,</span> <span class="mf">64550653</span><span class="p">]</span>
+      <span class="p">]</span>
+      <span class="kd">var</span> <span class="nx">COLORS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#996600&#39;</span><span class="p">,</span><span class="s1">&#39;#666600&#39;</span><span class="p">,</span><span class="s1">&#39;#99991E&#39;</span><span class="p">,</span><span class="s1">&#39;#CC0000&#39;</span><span class="p">,</span><span class="s1">&#39;#FF0000&#39;</span><span class="p">,</span><span class="s1">&#39;#FF00CC&#39;</span><span class="p">,</span><span class="s1">&#39;#FFCCCC&#39;</span><span class="p">,</span><span class="s1">&#39;#FF9900&#39;</span><span class="p">,</span><span class="s1">&#39;#FFCC00&#39;</span><span class="p">,</span><span class="s1">&#39;#FFFF00&#39;</span><span class="p">,</span><span class="s1">&#39;#CCFF00&#39;</span><span class="p">,</span><span class="s1">&#39;#00FF00&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;#358000&#39;</span><span class="p">,</span><span class="s1">&#39;#0000CC&#39;</span><span class="p">,</span><span class="s1">&#39;#6699FF&#39;</span><span class="p">,</span><span class="s1">&#39;#99CCFF&#39;</span><span class="p">,</span><span class="s1">&#39;#00FFFF&#39;</span><span class="p">,</span><span class="s1">&#39;#CCFFFF&#39;</span><span class="p">,</span><span class="s1">&#39;#9900CC&#39;</span><span class="p">,</span><span class="s1">&#39;#CC33FF&#39;</span><span class="p">,</span><span class="s1">&#39;#CC99FF&#39;</span><span class="p">,</span><span class="s1">&#39;#666666&#39;</span><span class="p">,</span><span class="s1">&#39;#999999&#39;</span><span class="p">,</span><span class="s1">&#39;#CCCCCC&#39;</span><span class="p">,</span><span class="s1">&#39;#996600&#39;</span><span class="p">,</span><span class="s1">&#39;#666600&#39;</span><span class="p">]</span>
+      <span class="kd">var</span> <span class="nx">links</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">key</span> <span class="p">=&gt;</span> <span class="o">!</span><span class="nx">key</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="sr">/link_*/</span><span class="p">))</span>
+      <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">1</span>
+      <span class="kd">var</span> <span class="nx">link_template</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;LINK01&#39;</span><span class="p">,</span>
+        <span class="p">{</span>
+          <span class="nx">LinkRadius</span><span class="o">:</span> <span class="mf">115</span><span class="p">,</span>
+          <span class="nx">LinkFillColor</span><span class="o">:</span> <span class="s1">&#39;#996600&#39;</span><span class="p">,</span>
+          <span class="nx">LinkWidth</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+          <span class="nx">displayLinkAxis</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="nx">LinkAxisColor</span><span class="o">:</span> <span class="s1">&#39;#B8B8B8&#39;</span><span class="p">,</span>
+          <span class="nx">LinkAxisWidth</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
+          <span class="nx">LinkAxisPad</span><span class="o">:</span> <span class="mf">3</span><span class="p">,</span>
+          <span class="nx">displayLinkLabel</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="nx">LinkLabelColor</span><span class="o">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span>
+          <span class="nx">LinkLabelSize</span><span class="o">:</span> <span class="mf">13</span><span class="p">,</span>
+          <span class="nx">LinkLabelPad</span><span class="o">:</span> <span class="mf">8</span>
+        <span class="p">},</span>
+        <span class="p">[]</span>
+      <span class="p">]</span>
+      <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span>
+      <span class="nx">BioCircosGenome</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">element</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">temp</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">link_template</span><span class="p">))</span>
+        <span class="nx">temp</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;LINK&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="mf">10</span> <span class="o">?</span> <span class="s1">&#39;0&#39;</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">:</span> <span class="nx">i</span><span class="p">)</span>
+        <span class="nx">temp</span><span class="p">[</span><span class="mf">1</span><span class="p">].</span><span class="nx">LinkFillColor</span> <span class="o">=</span> <span class="nx">COLORS</span><span class="p">[</span><span class="nx">i</span> <span class="o">-</span> <span class="mf">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">links</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;link_&#39;</span> <span class="o">+</span> <span class="nx">element</span><span class="p">[</span><span class="mf">0</span><span class="p">])</span> <span class="o">!==</span> <span class="o">-</span><span class="mf">1</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">temp</span><span class="p">[</span><span class="mf">2</span><span class="p">]</span> <span class="o">=</span> <span class="nx">that</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="s1">&#39;link_&#39;</span> <span class="o">+</span> <span class="nx">element</span><span class="p">[</span><span class="mf">0</span><span class="p">]]</span>
+        <span class="p">}</span>
+        <span class="nx">LINK</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">temp</span><span class="p">)</span>
+        <span class="nx">i</span><span class="o">++</span>
+      <span class="p">})</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">$nextTick</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">BioCircos01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BioCircos</span><span class="p">(</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">0</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">1</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">2</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">3</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">4</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">5</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">6</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">7</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">8</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">9</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">10</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">11</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">12</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">13</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">14</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">15</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">16</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">17</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">18</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">19</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">20</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">21</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">22</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">23</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">24</span><span class="p">],</span>
+          <span class="nx">LINK</span><span class="p">[</span><span class="mf">25</span><span class="p">],</span>
+          <span class="nx">BACKGROUND01</span><span class="p">,</span>
+          <span class="nx">SNP01</span><span class="p">,</span>
+          <span class="nx">SCATTER01</span><span class="p">,</span>
+          <span class="nx">BioCircosGenome</span><span class="p">,</span>
+          <span class="p">{</span>
+            <span class="nx">target</span><span class="o">:</span> <span class="s1">&#39;biocircos&#39;</span><span class="p">,</span>
+            <span class="nx">svgWidth</span><span class="o">:</span> <span class="mf">480</span><span class="p">,</span>
+            <span class="nx">svgHeight</span><span class="o">:</span> <span class="mf">450</span><span class="p">,</span>
+            <span class="nx">chrPad</span><span class="o">:</span> <span class="mf">0.04</span><span class="p">,</span>
+            <span class="nx">innerRadius</span><span class="o">:</span> <span class="mf">170</span><span class="p">,</span>
+            <span class="nx">outerRadius</span><span class="o">:</span> <span class="mf">180</span><span class="p">,</span>
+            <span class="nx">ARCMouseOnDisplay</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nx">SNPMouseOnDisplay</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nx">LINKMouseOnDisplay</span><span class="o">:</span> <span class="kc">true</span>
+          <span class="p">}</span>
+        <span class="p">)</span>
+        <span class="nx">BioCircos01</span><span class="p">.</span><span class="nx">draw_genome</span><span class="p">(</span><span class="nx">BioCircos01</span><span class="p">.</span><span class="nx">genomeLength</span><span class="p">)</span>
+      <span class="p">})</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+</div>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../gtex_viz/" class="md-footer__link md-footer__link--prev" aria-label="Previous: gtex-viz(带聚类树的热图)" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              gtex-viz(带聚类树的热图)
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../php/php/" class="md-footer__link md-footer__link--next" aria-label="Next: PHP" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              PHP
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "search.highlight", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.f8263e09.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      
+    
+  </body>
+</html>

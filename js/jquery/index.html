@@ -1,0 +1,1450 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+    
+    
+      
+        <title>jQuery - Web learn</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8b42a75e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#jquery" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Web learn" class="md-header__button md-logo" aria-label="Web learn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Web learn
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              jQuery
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../html_css/html_css/" class="md-tabs__link">
+        HTML/CSS
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../js/" class="md-tabs__link md-tabs__link--active">
+        JavaScript
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../php/php/" class="md-tabs__link">
+        PHP
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../mysql/mysql/" class="md-tabs__link">
+      MySQL
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../linux/linux/" class="md-tabs__link">
+      Linux
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../more/user_inter/" class="md-tabs__link">
+        More
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Web learn" class="md-nav__button md-logo" aria-label="Web learn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Web learn
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          HTML/CSS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HTML/CSS" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          HTML/CSS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../html_css/html_css/" class="md-nav__link">
+        HTML/CSS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../html_css/bootstrap/" class="md-nav__link">
+        Bootstrap3
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          JavaScript
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="JavaScript" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          JavaScript
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js/" class="md-nav__link">
+        JavaScript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          jQuery
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        jQuery
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#jquery_1" class="md-nav__link">
+    jQuery介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    在线学习网站
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datatables" class="md-nav__link">
+    Datatables
+  </a>
+  
+    <nav class="md-nav" aria-label="Datatables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datatables_1" class="md-nav__link">
+    DataTables的简单使用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    表格中加入选择框
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    增加表格下载插件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    使用搜索框对表格进行筛选，获取筛选后的数据
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datatables_2" class="md-nav__link">
+    修复Datatables表头的列宽与表格内部的列宽不符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jquery_2" class="md-nav__link">
+    基于jQuery的多级选择框
+  </a>
+  
+    <nav class="md-nav" aria-label="基于jQuery的多级选择框">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    常用函数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    输入框禁用
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Vue/" class="md-nav__link">
+        Vue.js
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../element/" class="md-nav__link">
+        ElementUI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quasar/" class="md-nav__link">
+        Quasar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../echarts/" class="md-nav__link">
+        Echarts(基本图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../amcharts/" class="md-nav__link">
+        amCharts(地图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plotly/" class="md-nav__link">
+        plotly.js(小提琴图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../highcharts/" class="md-nav__link">
+        Highcharts(基因结构图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phylotree/" class="md-nav__link">
+        Phylotree.js(绘制进化树)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cytoscape/" class="md-nav__link">
+        Cytoscape.js(网络图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gtex_viz/" class="md-nav__link">
+        gtex-viz(带聚类树的热图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../biocircos/" class="md-nav__link">
+        BioCircos.js(eQTL的circos图)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          PHP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="PHP" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          PHP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../php/php/" class="md-nav__link">
+        PHP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../php/tp/" class="md-nav__link">
+        ThinkPHP
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mysql/mysql/" class="md-nav__link">
+        MySQL
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/linux/" class="md-nav__link">
+        Linux
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          More
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="More" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          More
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/user_inter/" class="md-nav__link">
+        异常检测、提交反馈
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/jbrowse1/" class="md-nav__link">
+        JBrowse1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/jbrowse2/" class="md-nav__link">
+        JBrowse2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/blast/" class="md-nav__link">
+        Blast
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/gbrowse/" class="md-nav__link">
+        GBrowse_syn
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#jquery_1" class="md-nav__link">
+    jQuery介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    在线学习网站
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datatables" class="md-nav__link">
+    Datatables
+  </a>
+  
+    <nav class="md-nav" aria-label="Datatables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datatables_1" class="md-nav__link">
+    DataTables的简单使用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    表格中加入选择框
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    增加表格下载插件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    使用搜索框对表格进行筛选，获取筛选后的数据
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datatables_2" class="md-nav__link">
+    修复Datatables表头的列宽与表格内部的列宽不符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jquery_2" class="md-nav__link">
+    基于jQuery的多级选择框
+  </a>
+  
+    <nav class="md-nav" aria-label="基于jQuery的多级选择框">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    常用函数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    输入框禁用
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="jquery">jQuery<a class="headerlink" href="#jquery" title="Permanent link">#</a></h1>
+<h2 id="jquery_1">jQuery介绍<a class="headerlink" href="#jquery_1" title="Permanent link">#</a></h2>
+<p>jQuery 库主要包含:  </p>
+<ul>
+<li>HTML 元素选取与操作, 类似于js中的DOM  </li>
+<li>AJAX: 与后端交换数据  </li>
+<li>制作动画和特效  </li>
+<li>大量的第三方插件也会使用到jquery，例如后续介绍的Datatables</li>
+</ul>
+<h2 id="_1">在线学习网站<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://jquery.com/">jQuery官网</a>  </li>
+<li><a href="https://www.runoob.com/jquery/jquery-tutorial.html">菜鸟教程</a>  </li>
+<li><a href="https://www.w3school.com.cn/jquery/index.asp">W3school</a>  </li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>了解jQuery操作html元素的方法, 学习AJAX异步通信。</p>
+</div>
+<h2 id="datatables">Datatables<a class="headerlink" href="#datatables" title="Permanent link">#</a></h2>
+<p>Datatables是一款jquery表格插件, 详细配置选项介绍见<a href="http://datatables.club/">官网</a>。</p>
+<h3 id="datatables_1">DataTables的简单使用<a class="headerlink" href="#datatables_1" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c">&lt;!-- DataTables CSS --&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://cdn.datatables.net/1.10.21/css/jquery.dataTables.css&quot;</span><span class="p">&gt;</span>
+<span class="c">&lt;!-- jQuery --&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf8&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://code.jquery.com/jquery-1.10.2.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="c">&lt;!-- DataTables --&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf8&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://cdn.datatables.net/1.10.21/js/jquery.dataTables.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">table</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;table_id_example&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;display&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">thead</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Column 1<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Column 2<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">thead</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Row 1 Data 1<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Row 1 Data 2<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Row 2 Data 1<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Row 2 Data 2<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//初始化datatables表格</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#table_id_example&#39;</span><span class="p">).</span><span class="nx">DataTable</span><span class="p">();</span>
+<span class="p">}</span> <span class="p">);</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  ```
+
+### 使用对象初始化Datatables表格  
+```html
+<span class="p">&lt;</span><span class="nt">table</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;table&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;display&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">thead</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Column 1<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Column 2<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">thead</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nx">col1</span><span class="o">:</span> <span class="s1">&#39;Row 1 Data 1&#39;</span><span class="p">,</span>
+      <span class="nx">col2</span><span class="o">:</span> <span class="s1">&#39;Row 1 Data 2&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nx">col1</span><span class="o">:</span> <span class="s1">&#39;Row 2 Data 1&#39;</span><span class="p">,</span>
+      <span class="nx">col2</span><span class="o">:</span> <span class="s1">&#39;Row 2 Data 2&#39;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#table&#39;</span><span class="p">).</span><span class="nx">DataTable</span><span class="p">(</span> <span class="p">{</span>
+    <span class="nx">data</span><span class="o">:</span> <span class="nx">data</span><span class="p">,</span>
+    <span class="c1">//使用对象数组，一定要配置columns，告诉 DataTables 每列对应的属性</span>
+    <span class="c1">//data 这里是固定不变的，name，position，salary，office 为你数据里对应的属性</span>
+    <span class="nx">columns</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="nx">data</span><span class="o">:</span> <span class="s1">&#39;col1&#39;</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="nx">data</span><span class="o">:</span> <span class="s1">&#39;col2&#39;</span> <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span> <span class="p">)</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="_2">表格中加入选择框<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c">&lt;!-- 除了创建Datatables时所引用的，还需引入以下文件 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf8&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">table</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;example&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;display&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">thead</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>
+        <span class="c">&lt;!-- 全选框 --&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;select-checkbox&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Column 1<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Column 2<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">thead</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Row 1 Data 1<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Row 1 Data 2<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Row 2 Data 1<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Row 2 Data 2<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+
+  <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#example&#39;</span><span class="p">).</span><span class="nx">DataTable</span><span class="p">({</span>
+      <span class="nx">columnDefs</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="nx">orderable</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nx">className</span><span class="o">:</span> <span class="s1">&#39;select-checkbox&#39;</span><span class="p">,</span>
+        <span class="nx">targets</span><span class="o">:</span> <span class="mf">0</span>
+      <span class="p">}],</span>
+      <span class="nx">select</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">style</span><span class="o">:</span> <span class="s1">&#39;os&#39;</span><span class="p">,</span>
+        <span class="c1">//多选 style: &#39;multiple&#39;,</span>
+        <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;td:first-child&#39;</span>
+      <span class="p">},</span>
+      <span class="c1">//按第一列升序排序</span>
+      <span class="nx">order</span><span class="o">:</span> <span class="p">[[</span><span class="mf">1</span><span class="p">,</span> <span class="s1">&#39;asc&#39;</span><span class="p">]]</span>
+    <span class="p">});</span>
+
+    <span class="c1">//设置全选框事件</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#hap_checkbox&quot;</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#hap_checkbox&quot;</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">&#39;:checked&#39;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">table</span><span class="p">.</span><span class="nx">rows</span><span class="p">().</span><span class="nx">select</span><span class="p">();</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">table</span><span class="p">.</span><span class="nx">rows</span><span class="p">().</span><span class="nx">deselect</span><span class="p">();</span>
+      <span class="p">}</span>
+    <span class="p">})</span>
+
+    <span class="c1">//自动选择第一行</span>
+    <span class="nx">table</span><span class="p">.</span><span class="nx">row</span><span class="p">(</span><span class="s1">&#39;:eq(0)&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">page</span><span class="o">:</span> <span class="s1">&#39;current&#39;</span> <span class="p">}).</span><span class="nx">select</span><span class="p">()</span>
+
+    <span class="c1">//获取被选择的数据</span>
+    <span class="kd">var</span> <span class="nx">selected_data</span> <span class="o">=</span> <span class="nx">table</span><span class="p">.</span><span class="nx">rows</span><span class="p">(</span><span class="s1">&#39;.selected&#39;</span><span class="p">).</span><span class="nx">data</span><span class="p">()</span>
+  <span class="p">})</span>
+  <span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="_3">增加表格下载插件<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c">&lt;!-- 除了创建Datatables时所引用的，还需引入以下文件 --&gt;</span>
+<span class="c">&lt;!-- 按输出格式，自行选择需要的js文件 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">table</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;example&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;display&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">thead</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Column 1<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Column 2<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">thead</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Row 1 Data 1<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Row 1 Data 2<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Row 2 Data 1<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Row 2 Data 2<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#example&#39;</span><span class="p">).</span><span class="nx">DataTable</span><span class="p">({</span>
+      <span class="nx">dom</span><span class="o">:</span> <span class="s1">&#39;Bfrtip&#39;</span><span class="p">,</span>
+      <span class="nx">buttons</span><span class="o">:</span> <span class="p">[</span>
+        <span class="s1">&#39;copyHtml5&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;excelHtml5&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;csvHtml5&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;pdfHtml5&#39;</span>
+      <span class="p">]</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="_4">使用搜索框对表格进行筛选，获取筛选后的数据<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">//table变量同上</span>
+<span class="nx">table</span><span class="p">.</span><span class="nx">rows</span><span class="p">({</span><span class="nx">search</span><span class="o">:</span><span class="s1">&#39;applied&#39;</span><span class="p">}</span> <span class="p">).</span><span class="nx">data</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="datatables_2">修复Datatables表头的列宽与表格内部的列宽不符<a class="headerlink" href="#datatables_2" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#example&#39;</span><span class="p">).</span><span class="nx">DataTable</span><span class="p">({</span>
+    <span class="c1">//...</span>
+    <span class="s2">&quot;fnInitComplete&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">fnAdjustColumnSizing</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="c1">//...</span>
+  <span class="p">})</span>
+</code></pre></div>
+<h2 id="jquery_2">基于jQuery的多级选择框<a class="headerlink" href="#jquery_2" title="Permanent link">#</a></h2>
+<p>css、js文件下载页面: <a href="https://www.jq22.com/jquery-info17813">https://www.jq22.com/jquery-info17813</a><br />
+API文档: <a href="https://www.jq22.com/yanshi17813">Selectivity.js</a></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>在使用Vue搭建的页面中可直接使用<a href="https://element.eleme.cn/#/zh-CN/component/cascader#cascader-ji-lian-xuan-ze-qi">Element</a>提供的选择器。</p>
+</div>
+<h3 id="_5">示例<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code>  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://yanglab.hzau.edu.cn/static/css/selectivity-jquery.css&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf8&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://code.jquery.com/jquery-1.10.2.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf8&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://yanglab.hzau.edu.cn/static/js/selectivity-jquery.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:300px&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;selectivity&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+  <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#selectivity&#39;</span><span class="p">).</span><span class="nx">selectivity</span><span class="p">({</span>
+        <span class="nx">allowClear</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">items</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;item1&#39;</span><span class="p">,</span>
+            <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;item1&#39;</span><span class="p">,</span>
+            <span class="nx">submenu</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">items</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;item1-1&#39;</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;item1-1&#39;</span> <span class="p">},</span>
+                <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;item1-2&#39;</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;item1-2&#39;</span> <span class="p">},</span>
+                <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;item1-3&#39;</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;item1-3&#39;</span> <span class="p">},</span>
+                <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;item1-4&#39;</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;item1-4&#39;</span> <span class="p">}</span>
+              <span class="p">]</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;item2&#39;</span><span class="p">,</span>
+            <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;item2&#39;</span><span class="p">,</span>
+            <span class="nx">submenu</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">items</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                  <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;item2-1&#39;</span><span class="p">,</span>
+                  <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;item2-1&#39;</span><span class="p">,</span>
+                  <span class="nx">submenu</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">items</span><span class="o">:</span> <span class="p">[</span>
+                      <span class="p">{</span>
+                        <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;item2-1-1&#39;</span><span class="p">,</span>
+                        <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;item2-1-1&#39;</span><span class="p">,</span>
+                        <span class="nx">submenu</span><span class="o">:</span> <span class="p">{</span>
+                          <span class="nx">items</span><span class="o">:</span> <span class="p">[</span>
+                            <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;item2-1-1-1&#39;</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;item2-1-1-1&#39;</span> <span class="p">}</span>
+                          <span class="p">]</span>
+                        <span class="p">}</span>
+                      <span class="p">},</span>
+                      <span class="p">{</span>
+                        <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;item2-1-2&#39;</span><span class="p">,</span>
+                        <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;item2-1-2&#39;</span><span class="p">,</span>
+                        <span class="nx">submenu</span><span class="o">:</span> <span class="p">{</span>
+                          <span class="nx">items</span><span class="o">:</span> <span class="p">[</span>
+                            <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;item2-1-2-1&#39;</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;item2-1-2-1&#39;</span> <span class="p">},</span>
+                            <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;item2-1-2-2&#39;</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;item2-1-2-2&#39;</span> <span class="p">}</span>
+                          <span class="p">]</span>
+                        <span class="p">}</span>
+                      <span class="p">}</span>
+                    <span class="p">]</span>
+                  <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                  <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;item2-2&#39;</span><span class="p">,</span>
+                  <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;item2-2&#39;</span><span class="p">,</span>
+                  <span class="nx">submenu</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">items</span><span class="o">:</span> <span class="p">[</span>
+                      <span class="p">{</span>
+                        <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;item2-2-1&#39;</span><span class="p">,</span>
+                        <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;item2-2-1&#39;</span><span class="p">,</span>
+                        <span class="nx">submenu</span><span class="o">:</span> <span class="p">{</span>
+                          <span class="nx">items</span><span class="o">:</span> <span class="p">[</span>
+                            <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;item2-2-1-1&#39;</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;item2-2-1-1&#39;</span> <span class="p">}</span>
+                          <span class="p">]</span>
+                        <span class="p">}</span>
+                      <span class="p">},</span>
+                      <span class="p">{</span>
+                        <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;item2-2-2&#39;</span><span class="p">,</span>
+                        <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;item2-2-2&#39;</span><span class="p">,</span>
+                        <span class="nx">submenu</span><span class="o">:</span> <span class="p">{</span>
+                          <span class="nx">items</span><span class="o">:</span> <span class="p">[</span>
+                            <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;item2-2-2-1&#39;</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;item2-2-2-1&#39;</span> <span class="p">},</span>
+                            <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;item2-2-2-2&#39;</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;item2-2-2-2&#39;</span> <span class="p">}</span>
+                          <span class="p">]</span>
+                        <span class="p">}</span>
+                      <span class="p">}</span>
+                    <span class="p">]</span>
+                  <span class="p">}</span>
+                <span class="p">}</span>
+              <span class="p">]</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nx">placeholder</span><span class="o">:</span> <span class="s1">&#39;No item selected&#39;</span><span class="p">,</span>
+        <span class="nx">showSearchInputInDropdown</span><span class="o">:</span> <span class="kc">false</span>
+      <span class="p">})</span>
+    <span class="p">})</span>
+  <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="_6">常用函数<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code>  <span class="c1">//可在生成选择框后使用，来自动选择某一项</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#selectivity&#39;</span><span class="p">).</span><span class="nx">selectivity</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="s1">&#39;item2-2-2-1&#39;</span><span class="p">)</span>
+
+  <span class="c1">//获取被选择的值</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#selectivity&#39;</span><span class="p">).</span><span class="nx">selectivity</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+  <span class="c1">//获取被选择的text属性</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#selectivity&#39;</span><span class="p">).</span><span class="nx">selectivity</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">).</span><span class="nx">text</span>
+</code></pre></div>
+<h2 id="_7">输入框禁用<a class="headerlink" href="#_7" title="Permanent link">#</a></h2>
+<p><a href="../../more/user_inter/#_2">输入框禁用</a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../js/" class="md-footer__link md-footer__link--prev" aria-label="Previous: JavaScript" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              JavaScript
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Vue/" class="md-footer__link md-footer__link--next" aria-label="Next: Vue.js" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Vue.js
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "search.highlight", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.f8263e09.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      
+    
+  </body>
+</html>

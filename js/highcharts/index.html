@@ -1,0 +1,1481 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+    
+    
+      
+        <title>Highcharts(基因结构图) - Web learn</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8b42a75e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#highcharts" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Web learn" class="md-header__button md-logo" aria-label="Web learn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Web learn
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Highcharts(基因结构图)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../html_css/html_css/" class="md-tabs__link">
+        HTML/CSS
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../js/" class="md-tabs__link md-tabs__link--active">
+        JavaScript
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../php/php/" class="md-tabs__link">
+        PHP
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../mysql/mysql/" class="md-tabs__link">
+      MySQL
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../linux/linux/" class="md-tabs__link">
+      Linux
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../more/user_inter/" class="md-tabs__link">
+        More
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Web learn" class="md-nav__button md-logo" aria-label="Web learn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Web learn
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          HTML/CSS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HTML/CSS" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          HTML/CSS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../html_css/html_css/" class="md-nav__link">
+        HTML/CSS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../html_css/bootstrap/" class="md-nav__link">
+        Bootstrap3
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          JavaScript
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="JavaScript" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          JavaScript
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js/" class="md-nav__link">
+        JavaScript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jquery/" class="md-nav__link">
+        jQuery
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Vue/" class="md-nav__link">
+        Vue.js
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../element/" class="md-nav__link">
+        ElementUI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quasar/" class="md-nav__link">
+        Quasar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../echarts/" class="md-nav__link">
+        Echarts(基本图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../amcharts/" class="md-nav__link">
+        amCharts(地图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plotly/" class="md-nav__link">
+        plotly.js(小提琴图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Highcharts(基因结构图)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Highcharts(基因结构图)
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#highcharts" class="md-nav__link">
+    Highcharts介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    绘制基因结构图
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phylotree/" class="md-nav__link">
+        Phylotree.js(绘制进化树)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cytoscape/" class="md-nav__link">
+        Cytoscape.js(网络图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gtex_viz/" class="md-nav__link">
+        gtex-viz(带聚类树的热图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../biocircos/" class="md-nav__link">
+        BioCircos.js(eQTL的circos图)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          PHP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="PHP" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          PHP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../php/php/" class="md-nav__link">
+        PHP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../php/tp/" class="md-nav__link">
+        ThinkPHP
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mysql/mysql/" class="md-nav__link">
+        MySQL
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/linux/" class="md-nav__link">
+        Linux
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          More
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="More" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          More
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/user_inter/" class="md-nav__link">
+        异常检测、提交反馈
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/jbrowse1/" class="md-nav__link">
+        JBrowse1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/jbrowse2/" class="md-nav__link">
+        JBrowse2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/blast/" class="md-nav__link">
+        Blast
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/gbrowse/" class="md-nav__link">
+        GBrowse_syn
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#highcharts" class="md-nav__link">
+    Highcharts介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    绘制基因结构图
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Highcharts(基因结构图)</h1>
+                
+                <h2 id="highcharts">Highcharts介绍<a class="headerlink" href="#highcharts" title="Permanent link">#</a></h2>
+<p>根据<a href="https://www.highcharts.com.cn/">Highcharts</a>中的<a href="https://www.highcharts.com.cn/demo/highcharts/bullet-graph">子弹图</a>绘制基因结构图。</p>
+<h2 id="_1">绘制基因结构图<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
+<p><img alt="基因结构图" src="../../images/gene.png" /></p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">JavaScript</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf8&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://code.jquery.com/jquery-1.10.2.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf8&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdn.highcharts.com.cn/highcharts/highcharts.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:1350px;&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;bullet&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;height:45px;width:1300px&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;container2&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;height:50px;width:1300px&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">draw</span><span class="p">()</span>
+<span class="p">})</span>
+<span class="kd">function</span> <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">//以下配置根据实际图形进行调整</span>
+  <span class="c1">//data 存储基因信息</span>
+  <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;from&quot;</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+      <span class="s2">&quot;to&quot;</span><span class="o">:</span> <span class="mf">657</span><span class="p">,</span>
+      <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;#0083B7&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;zIndex&quot;</span><span class="o">:</span> <span class="mf">20</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;CDS&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;from&quot;</span><span class="o">:</span> <span class="mf">1926</span><span class="p">,</span>
+      <span class="s2">&quot;to&quot;</span><span class="o">:</span> <span class="mf">2012</span><span class="p">,</span>
+      <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;#0083B7&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;zIndex&quot;</span><span class="o">:</span> <span class="mf">20</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;CDS&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+  <span class="c1">//scatter 存储snp信息</span>
+  <span class="kd">var</span> <span class="nx">scatter</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;pos:143777||ref/alt:C/T(0.96/0.04)||type:missense_variant MODERATE&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;x&quot;</span><span class="o">:</span> <span class="mf">196</span><span class="p">,</span>
+      <span class="s2">&quot;y&quot;</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>
+      <span class="s2">&quot;chengdu&quot;</span><span class="o">:</span> <span class="s2">&quot;MODERATE&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;#EE7600&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;pos:144199||ref/alt:T/G(0.91/0.09)||type:synonymous_variant LOW&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;x&quot;</span><span class="o">:</span> <span class="mf">618</span><span class="p">,</span>
+      <span class="s2">&quot;y&quot;</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>
+      <span class="s2">&quot;chengdu&quot;</span><span class="o">:</span> <span class="s2">&quot;LOW&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;pos:144767||ref/alt:C/T(0.90/0.10)||type:downstream_gene_variant MODIFIER&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;x&quot;</span><span class="o">:</span> <span class="mf">1186</span><span class="p">,</span>
+      <span class="s2">&quot;y&quot;</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>
+      <span class="s2">&quot;chengdu&quot;</span><span class="o">:</span> <span class="s2">&quot;MODIFIER&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;#303030\t&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;pos:144875||ref/alt:G/GGACTATCACTCTGACCC(0.97/0.03)||type:downstream_gene_variant MODIFIER&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;x&quot;</span><span class="o">:</span> <span class="mf">1294</span><span class="p">,</span>
+      <span class="s2">&quot;y&quot;</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>
+      <span class="s2">&quot;chengdu&quot;</span><span class="o">:</span> <span class="s2">&quot;MODIFIER&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;#303030\t&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;pos:145290||ref/alt:A/C(0.83/0.17)||type:downstream_gene_variant MODIFIER&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;x&quot;</span><span class="o">:</span> <span class="mf">1709</span><span class="p">,</span>
+      <span class="s2">&quot;y&quot;</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>
+      <span class="s2">&quot;chengdu&quot;</span><span class="o">:</span> <span class="s2">&quot;MODIFIER&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;#303030\t&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;pos:145538||ref/alt:C/G(0.91/0.09)||type:missense_variant MODERATE&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;x&quot;</span><span class="o">:</span> <span class="mf">1957</span><span class="p">,</span>
+      <span class="s2">&quot;y&quot;</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>
+      <span class="s2">&quot;chengdu&quot;</span><span class="o">:</span> <span class="s2">&quot;MODERATE&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;#EE7600&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+  <span class="c1">//长度</span>
+  <span class="kd">var</span> <span class="nx">len</span> <span class="o">=</span> <span class="mf">2012</span>
+  <span class="c1">//基因方向</span>
+  <span class="kd">var</span> <span class="nx">strand</span> <span class="o">=</span> <span class="s1">&#39;+&#39;</span>
+  <span class="c1">//添加基因方向</span>
+  <span class="kd">var</span> <span class="nx">from_min</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nb">Math</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">item</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">item</span><span class="p">.</span><span class="k">from</span> <span class="p">}))</span>
+  <span class="kd">var</span> <span class="nx">to_max</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nb">Math</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">item</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">item</span><span class="p">.</span><span class="nx">to</span> <span class="p">}))</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">strand</span> <span class="o">==</span> <span class="s2">&quot;+&quot;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">plot_num</span> <span class="o">=</span> <span class="nx">to_max</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">plot_text</span> <span class="o">=</span> <span class="s1">&#39;→&#39;</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="mf">22</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">strand</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">plot_num</span> <span class="o">=</span> <span class="nx">from_min</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">plot_text</span> <span class="o">=</span> <span class="s1">&#39;←&#39;</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="o">-</span><span class="mf">25</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="mf">22</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">Highcharts</span><span class="p">.</span><span class="nx">Renderer</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">symbols</span><span class="p">.</span><span class="nx">line</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="o">+</span> <span class="nx">width</span> <span class="o">/</span> <span class="mf">2</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">height</span><span class="p">,</span> <span class="nx">y</span> <span class="o">+</span> <span class="nx">width</span> <span class="o">/</span> <span class="mf">2</span><span class="p">];</span>
+  <span class="p">};</span>
+  <span class="nx">Highcharts</span><span class="p">.</span><span class="nx">setOptions</span><span class="p">({</span>
+    <span class="nx">chart</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+      <span class="nx">width</span><span class="o">:</span> <span class="mf">1300</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nx">credits</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">enabled</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="nx">exporting</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">enabled</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="nx">title</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;&#39;</span>
+    <span class="p">},</span>
+    <span class="nx">xAxis</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">tickLength</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+      <span class="nx">lineColor</span><span class="o">:</span> <span class="s1">&#39;#0083B7&#39;</span><span class="p">,</span>
+      <span class="nx">lineWidth</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+      <span class="nx">labels</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">style</span><span class="o">:</span> <span class="p">{</span>
+          <span class="nx">fontWeight</span><span class="o">:</span> <span class="s1">&#39;bold&#39;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">yAxis</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">min</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+      <span class="nx">minPadding</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+      <span class="nx">maxPadding</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+      <span class="nx">tickColor</span><span class="o">:</span> <span class="s1">&#39;#ccc&#39;</span><span class="p">,</span>
+      <span class="nx">tickWidth</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+      <span class="nx">tickLength</span><span class="o">:</span> <span class="mf">3</span><span class="p">,</span>
+      <span class="nx">gridLineWidth</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+      <span class="nx">endOnTick</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">title</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;&#39;</span>
+      <span class="p">},</span>
+      <span class="nx">labels</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">y</span><span class="o">:</span> <span class="mf">10</span><span class="p">,</span>
+        <span class="nx">style</span><span class="o">:</span> <span class="p">{</span>
+          <span class="nx">fontSize</span><span class="o">:</span> <span class="s1">&#39;8px&#39;</span>
+        <span class="p">},</span>
+
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">plotOptions</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">bar</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#333333&#39;</span><span class="p">,</span>
+        <span class="nx">shadow</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nx">borderWidth</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+  <span class="kd">var</span> <span class="nx">chart1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Highcharts</span><span class="p">.</span><span class="nx">Chart</span><span class="p">({</span>
+    <span class="nx">chart</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">renderTo</span><span class="o">:</span> <span class="s1">&#39;bullet&#39;</span><span class="p">,</span>
+      <span class="nx">width</span><span class="o">:</span> <span class="mf">1300</span><span class="p">,</span>
+      <span class="nx">marginLeft</span><span class="o">:</span> <span class="mf">50</span><span class="p">,</span>
+      <span class="nx">marginRight</span><span class="o">:</span> <span class="mf">50</span><span class="p">,</span>
+      <span class="nx">marginTop</span><span class="o">:</span> <span class="mf">19</span><span class="p">,</span>
+      <span class="nx">marginBottom</span><span class="o">:</span> <span class="o">-</span><span class="mf">1</span>
+    <span class="p">},</span>
+    <span class="nx">tooltip</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">enabled</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="nx">legend</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">enabled</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="nx">xAxis</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">text</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;&#39;</span>
+      <span class="p">},</span>
+      <span class="nx">visible</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">labels</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">enabled</span><span class="o">:</span> <span class="kc">false</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="nx">yAxis</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">plotLines</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nx">value</span><span class="o">:</span> <span class="nx">plot_num</span><span class="p">,</span>
+          <span class="nx">width</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+          <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span>
+          <span class="nx">zIndex</span><span class="o">:</span> <span class="mf">100</span><span class="p">,</span>
+          <span class="nx">label</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">rotation</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+            <span class="nx">align</span><span class="o">:</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span>
+            <span class="nx">x</span><span class="o">:</span> <span class="nx">x</span><span class="p">,</span>
+            <span class="nx">y</span><span class="o">:</span> <span class="nx">y</span><span class="p">,</span>
+            <span class="nx">style</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">fontSize</span><span class="o">:</span> <span class="s1">&#39;27px&#39;</span>
+            <span class="p">},</span>
+            <span class="nx">text</span><span class="o">:</span> <span class="nx">plot_text</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+      <span class="p">],</span>
+      <span class="nx">labels</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">enabled</span><span class="o">:</span> <span class="kc">false</span>
+      <span class="p">},</span>
+      <span class="nx">endOnTick</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">plotBands</span><span class="o">:</span> <span class="nx">data</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nx">series</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">[</span>
+          <span class="nx">len</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;pointWidth&quot;</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Measure&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+  <span class="p">});</span>
+  <span class="kd">var</span> <span class="nx">chart2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Highcharts</span><span class="p">.</span><span class="nx">Chart</span><span class="p">({</span>
+    <span class="nx">chart</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">renderTo</span><span class="o">:</span> <span class="s1">&#39;container2&#39;</span><span class="p">,</span>
+      <span class="nx">width</span><span class="o">:</span> <span class="mf">1250</span><span class="p">,</span>
+      <span class="nx">marginBottom</span><span class="o">:</span> <span class="mf">26</span><span class="p">,</span>
+      <span class="nx">marginTop</span><span class="o">:</span> <span class="mf">10</span><span class="p">,</span>
+      <span class="nx">marginLeft</span><span class="o">:</span> <span class="mf">50</span><span class="p">,</span>
+      <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;scatter&#39;</span><span class="p">,</span>
+      <span class="nx">zoomType</span><span class="o">:</span> <span class="s1">&#39;xy&#39;</span>
+    <span class="p">},</span>
+    <span class="nx">title</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;Ghi_A01G00036 in region A01:143582..145593 ± 0 kb&#39;</span><span class="p">,</span>
+      <span class="nx">y</span><span class="o">:</span> <span class="mf">34</span><span class="p">,</span>
+      <span class="nx">style</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">fontSize</span><span class="o">:</span> <span class="s1">&#39;14px&#39;</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">credits</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">enabled</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="nx">exporting</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">enabled</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="nx">legend</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">enabled</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="nx">xAxis</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">title</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">enabled</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;&#39;</span>
+      <span class="p">},</span>
+      <span class="nx">startOnTick</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">endOnTick</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">showLastLabel</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">min</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+      <span class="nx">max</span><span class="o">:</span> <span class="nx">len</span><span class="p">,</span>
+      <span class="nx">visible</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nx">yAxis</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">visible</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">min</span><span class="o">:</span> <span class="mf">4</span><span class="p">,</span>
+      <span class="nx">max</span><span class="o">:</span> <span class="mf">5</span>
+    <span class="p">},</span>
+    <span class="nx">plotOptions</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">scatter</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">marker</span><span class="o">:</span> <span class="p">{</span>
+          <span class="nx">radius</span><span class="o">:</span> <span class="mf">6</span><span class="p">,</span>
+          <span class="nx">symbol</span><span class="o">:</span> <span class="s1">&#39;triangle-down&#39;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="nx">tooltip</span><span class="o">:</span> <span class="p">{</span>
+          <span class="nx">headerFormat</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+          <span class="nx">pointFormat</span><span class="o">:</span> <span class="s1">&#39;{point.name}&#39;</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nx">series</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">cursor</span><span class="o">:</span> <span class="s1">&#39;pointer&#39;</span><span class="p">,</span>
+        <span class="nx">point</span><span class="o">:</span> <span class="p">{</span>
+          <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">click</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+              <span class="c1">//散点的点击事件</span>
+              <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">series</span><span class="o">:</span> <span class="p">[{</span>
+      <span class="nx">data</span><span class="o">:</span> <span class="nx">scatter</span>
+    <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Vue</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="c">&lt;!-- npm install highcharts --save --&gt;</span>
+<span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;container1&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;height:45px;width:1300px&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;container2&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;height:50px;width:1250px&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="k">import</span> <span class="nx">Highcharts</span> <span class="k">from</span> <span class="s1">&#39;highcharts&#39;</span>
+  <span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;geneStructure&#39;</span><span class="p">,</span>
+    <span class="nx">components</span><span class="o">:</span> <span class="p">{},</span>
+    <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;&quot;Glyma.08G367700 in region Chr08:47792490..47793777 ± 0kb&quot;&#39;</span><span class="p">,</span>
+        <span class="nx">plotbands</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="k">from</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+            <span class="nx">to</span><span class="o">:</span> <span class="mf">702</span><span class="p">,</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span>
+            <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#C9C9C9&#39;</span><span class="p">,</span>
+            <span class="nx">zIndex</span><span class="o">:</span> <span class="mf">20</span><span class="p">,</span>
+            <span class="nx">label</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">align</span><span class="o">:</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span>
+              <span class="nx">x</span><span class="o">:</span> <span class="o">-</span><span class="mf">24</span><span class="p">,</span>
+              <span class="nx">y</span><span class="o">:</span> <span class="mf">22</span><span class="p">,</span>
+              <span class="nx">style</span><span class="o">:</span> <span class="p">{</span> <span class="nx">fontSize</span><span class="o">:</span> <span class="s1">&#39;30px&#39;</span> <span class="p">},</span>
+              <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;←&#39;</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="p">{</span> <span class="k">from</span><span class="o">:</span> <span class="mf">703</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="mf">889</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#0083B7&#39;</span><span class="p">,</span> <span class="nx">zIndex</span><span class="o">:</span> <span class="mf">20</span> <span class="p">},</span>
+          <span class="p">{</span> <span class="k">from</span><span class="o">:</span> <span class="mf">994</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="mf">1106</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#0083B7&#39;</span><span class="p">,</span> <span class="nx">zIndex</span><span class="o">:</span> <span class="mf">20</span> <span class="p">},</span>
+          <span class="p">{</span> <span class="k">from</span><span class="o">:</span> <span class="mf">1107</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="mf">1287</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#C9C9C9&#39;</span><span class="p">,</span> <span class="nx">zIndex</span><span class="o">:</span> <span class="mf">20</span> <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nx">region_len</span><span class="o">:</span> <span class="mf">1287</span><span class="p">,</span>
+        <span class="nx">scatterData</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span>
+              <span class="s1">&#39;1: pos:47792721||ref/alt:C/T(0.39/0.61)||type:3_prime_UTR_variant MODIFIER&#39;</span><span class="p">,</span>
+            <span class="nx">x</span><span class="o">:</span> <span class="mf">232</span><span class="p">,</span>
+            <span class="nx">y</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>
+            <span class="nx">chengdu</span><span class="o">:</span> <span class="s1">&#39;MODIFIER&#39;</span><span class="p">,</span>
+            <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#303030\t&#39;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span>
+              <span class="s1">&#39;2: pos:47793019||ref/alt:C/T(0.39/0.61)||type:3_prime_UTR_variant MODIFIER&#39;</span><span class="p">,</span>
+            <span class="nx">x</span><span class="o">:</span> <span class="mf">530</span><span class="p">,</span>
+            <span class="nx">y</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>
+            <span class="nx">chengdu</span><span class="o">:</span> <span class="s1">&#39;MODIFIER&#39;</span><span class="p">,</span>
+            <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#303030\t&#39;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span>
+              <span class="s1">&#39;3: pos:47793093||ref/alt:G/GAA(0.39/0.61)||type:3_prime_UTR_variant MODIFIER&#39;</span><span class="p">,</span>
+            <span class="nx">x</span><span class="o">:</span> <span class="mf">604</span><span class="p">,</span>
+            <span class="nx">y</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>
+            <span class="nx">chengdu</span><span class="o">:</span> <span class="s1">&#39;MODIFIER&#39;</span><span class="p">,</span>
+            <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#303030\t&#39;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">mounted</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">draw</span><span class="p">()</span>
+    <span class="p">},</span>
+    <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span>
+        <span class="nx">Highcharts</span><span class="p">.</span><span class="nx">setOptions</span><span class="p">({</span>
+          <span class="nx">chart</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">width</span><span class="o">:</span> <span class="mf">1300</span><span class="p">,</span>
+            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;bar&#39;</span>
+          <span class="p">},</span>
+          <span class="nx">title</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">text</span><span class="o">:</span> <span class="kc">null</span>
+          <span class="p">},</span>
+          <span class="nx">legend</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">enabled</span><span class="o">:</span> <span class="kc">false</span>
+          <span class="p">},</span>
+          <span class="nx">xAxis</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">tickLength</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+            <span class="nx">lineColor</span><span class="o">:</span> <span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span>
+            <span class="nx">lineWidth</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+            <span class="nx">labels</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">style</span><span class="o">:</span> <span class="p">{</span> <span class="nx">fontWeight</span><span class="o">:</span> <span class="s1">&#39;bold&#39;</span> <span class="p">}</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="nx">yAxis</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">min</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+            <span class="nx">minPadding</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+            <span class="nx">maxPadding</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+            <span class="nx">tickColor</span><span class="o">:</span> <span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span>
+            <span class="nx">tickWidth</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+            <span class="nx">tickLength</span><span class="o">:</span> <span class="mf">3</span><span class="p">,</span>
+            <span class="nx">gridLineWidth</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+            <span class="nx">endOnTick</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nx">title</span><span class="o">:</span> <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;&#39;</span> <span class="p">},</span>
+            <span class="nx">labels</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">y</span><span class="o">:</span> <span class="mf">10</span><span class="p">,</span>
+              <span class="nx">style</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">fontSize</span><span class="o">:</span> <span class="s1">&#39;8px&#39;</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="nx">plotOptions</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">bar</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#333333&#39;</span><span class="p">,</span>
+              <span class="nx">shadow</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+              <span class="nx">borderWidth</span><span class="o">:</span> <span class="mf">0</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="nx">credits</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">enabled</span><span class="o">:</span> <span class="kc">false</span>
+          <span class="p">},</span>
+          <span class="nx">exporting</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">enabled</span><span class="o">:</span> <span class="kc">false</span>
+          <span class="p">}</span>
+        <span class="p">})</span>
+        <span class="nx">Highcharts</span><span class="p">.</span><span class="nx">chart</span><span class="p">(</span><span class="s1">&#39;container1&#39;</span><span class="p">,</span> <span class="p">{</span>
+          <span class="nx">chart</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">marginBottom</span><span class="o">:</span> <span class="o">-</span><span class="mf">1</span><span class="p">,</span>
+            <span class="nx">marginLeft</span><span class="o">:</span> <span class="mf">50</span><span class="p">,</span>
+            <span class="nx">marginRight</span><span class="o">:</span> <span class="mf">50</span><span class="p">,</span>
+            <span class="nx">marginTop</span><span class="o">:</span> <span class="mf">19</span><span class="p">,</span>
+            <span class="nx">width</span><span class="o">:</span> <span class="mf">1300</span>
+          <span class="p">},</span>
+          <span class="nx">tooltip</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">enabled</span><span class="o">:</span> <span class="kc">false</span>
+          <span class="p">},</span>
+          <span class="nx">xAxis</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">visible</span><span class="o">:</span> <span class="kc">false</span>
+          <span class="p">},</span>
+          <span class="nx">yAxis</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">endOnTick</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nx">labels</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">enabled</span><span class="o">:</span> <span class="kc">false</span>
+            <span class="p">},</span>
+            <span class="nx">plotBands</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">plotbands</span><span class="p">,</span>
+            <span class="nx">plotLines</span><span class="o">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="nx">value</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">region_len</span><span class="p">,</span>
+                <span class="nx">width</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+                <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span>
+                <span class="nx">zIndex</span><span class="o">:</span> <span class="mf">100</span>
+              <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="nx">title</span><span class="o">:</span> <span class="kc">null</span>
+          <span class="p">},</span>
+          <span class="nx">series</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="nx">data</span><span class="o">:</span> <span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">region_len</span><span class="p">],</span>
+              <span class="nx">pointWidth</span><span class="o">:</span> <span class="mf">1</span>
+            <span class="p">}</span>
+          <span class="p">]</span>
+        <span class="p">})</span>
+        <span class="k">new</span> <span class="nx">Highcharts</span><span class="p">.</span><span class="nx">Chart</span><span class="p">(</span><span class="s1">&#39;container2&#39;</span><span class="p">,</span> <span class="p">{</span>
+          <span class="nx">chart</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">width</span><span class="o">:</span> <span class="mf">1250</span><span class="p">,</span>
+            <span class="nx">marginBottom</span><span class="o">:</span> <span class="mf">26</span><span class="p">,</span>
+            <span class="nx">marginTop</span><span class="o">:</span> <span class="mf">10</span><span class="p">,</span>
+            <span class="nx">marginLeft</span><span class="o">:</span> <span class="mf">50</span><span class="p">,</span>
+            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;scatter&#39;</span><span class="p">,</span>
+            <span class="nx">zoomType</span><span class="o">:</span> <span class="s1">&#39;xy&#39;</span>
+          <span class="p">},</span>
+          <span class="nx">title</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">text</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span>
+            <span class="nx">y</span><span class="o">:</span> <span class="mf">34</span><span class="p">,</span>
+            <span class="nx">style</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">fontSize</span><span class="o">:</span> <span class="s1">&#39;14px&#39;</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="nx">credits</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">enabled</span><span class="o">:</span> <span class="kc">false</span>
+          <span class="p">},</span>
+          <span class="nx">exporting</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">enabled</span><span class="o">:</span> <span class="kc">false</span>
+          <span class="p">},</span>
+          <span class="nx">legend</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">enabled</span><span class="o">:</span> <span class="kc">false</span>
+          <span class="p">},</span>
+          <span class="nx">xAxis</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">title</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">enabled</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+              <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;&#39;</span>
+            <span class="p">},</span>
+            <span class="nx">startOnTick</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nx">endOnTick</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nx">showLastLabel</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nx">min</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+            <span class="nx">max</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">region_len</span> <span class="o">-</span> <span class="mf">1</span><span class="p">,</span>
+            <span class="nx">visible</span><span class="o">:</span> <span class="kc">false</span>
+          <span class="p">},</span>
+          <span class="nx">yAxis</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">visible</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nx">min</span><span class="o">:</span> <span class="mf">4</span><span class="p">,</span>
+            <span class="nx">max</span><span class="o">:</span> <span class="mf">5</span>
+          <span class="p">},</span>
+          <span class="nx">plotOptions</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">scatter</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">marker</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">radius</span><span class="o">:</span> <span class="mf">6</span><span class="p">,</span>
+                <span class="nx">symbol</span><span class="o">:</span> <span class="s1">&#39;triangle-down&#39;</span>
+              <span class="p">},</span>
+              <span class="nx">tooltip</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">headerFormat</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                <span class="nx">pointFormat</span><span class="o">:</span> <span class="s1">&#39;{point.name}&#39;</span>
+              <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nx">series</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">cursor</span><span class="o">:</span> <span class="s1">&#39;pointer&#39;</span><span class="p">,</span>
+              <span class="nx">point</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+                  <span class="nx">click</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+                  <span class="p">}</span>
+                <span class="p">}</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="nx">series</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="nx">data</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">scatterData</span>
+            <span class="p">}</span>
+          <span class="p">]</span>
+        <span class="p">})</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+</div>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../plotly/" class="md-footer__link md-footer__link--prev" aria-label="Previous: plotly.js(小提琴图)" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              plotly.js(小提琴图)
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../phylotree/" class="md-footer__link md-footer__link--next" aria-label="Next: Phylotree.js(绘制进化树)" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Phylotree.js(绘制进化树)
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "search.highlight", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.f8263e09.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      
+    
+  </body>
+</html>

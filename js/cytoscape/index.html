@@ -1,0 +1,1275 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+    
+    
+      
+        <title>Cytoscape.js(网络图) - Web learn</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8b42a75e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cytoscapejs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Web learn" class="md-header__button md-logo" aria-label="Web learn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Web learn
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cytoscape.js(网络图)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../html_css/html_css/" class="md-tabs__link">
+        HTML/CSS
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../js/" class="md-tabs__link md-tabs__link--active">
+        JavaScript
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../php/php/" class="md-tabs__link">
+        PHP
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../mysql/mysql/" class="md-tabs__link">
+      MySQL
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../linux/linux/" class="md-tabs__link">
+      Linux
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../more/user_inter/" class="md-tabs__link">
+        More
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Web learn" class="md-nav__button md-logo" aria-label="Web learn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Web learn
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          HTML/CSS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HTML/CSS" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          HTML/CSS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../html_css/html_css/" class="md-nav__link">
+        HTML/CSS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../html_css/bootstrap/" class="md-nav__link">
+        Bootstrap3
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          JavaScript
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="JavaScript" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          JavaScript
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js/" class="md-nav__link">
+        JavaScript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jquery/" class="md-nav__link">
+        jQuery
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Vue/" class="md-nav__link">
+        Vue.js
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../element/" class="md-nav__link">
+        ElementUI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quasar/" class="md-nav__link">
+        Quasar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../echarts/" class="md-nav__link">
+        Echarts(基本图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../amcharts/" class="md-nav__link">
+        amCharts(地图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plotly/" class="md-nav__link">
+        plotly.js(小提琴图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../highcharts/" class="md-nav__link">
+        Highcharts(基因结构图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phylotree/" class="md-nav__link">
+        Phylotree.js(绘制进化树)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Cytoscape.js(网络图)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Cytoscape.js(网络图)
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cytoscapejs" class="md-nav__link">
+    Cytoscape.js简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gtex_viz/" class="md-nav__link">
+        gtex-viz(带聚类树的热图)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../biocircos/" class="md-nav__link">
+        BioCircos.js(eQTL的circos图)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          PHP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="PHP" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          PHP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../php/php/" class="md-nav__link">
+        PHP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../php/tp/" class="md-nav__link">
+        ThinkPHP
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mysql/mysql/" class="md-nav__link">
+        MySQL
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/linux/" class="md-nav__link">
+        Linux
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          More
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="More" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          More
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/user_inter/" class="md-nav__link">
+        异常检测、提交反馈
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/jbrowse1/" class="md-nav__link">
+        JBrowse1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/jbrowse2/" class="md-nav__link">
+        JBrowse2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/blast/" class="md-nav__link">
+        Blast
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../more/gbrowse/" class="md-nav__link">
+        GBrowse_syn
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cytoscapejs" class="md-nav__link">
+    Cytoscape.js简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Cytoscape.js(网络图)</h1>
+                
+                <h2 id="cytoscapejs">Cytoscape.js简介<a class="headerlink" href="#cytoscapejs" title="Permanent link">#</a></h2>
+<p><a href="https://js.cytoscape.org/">Cytoscape.js</a> 可用来绘制各种网络图, 其中<a href="https://js.cytoscape.org/demos/colajs-graph/">cola.js</a>可以绘制gene与gene间的网络图。<br />
+API文档参考<a href="https://js.cytoscape.org/#getting-started">https://js.cytoscape.org/#getting-started</a></p>
+<h2 id="_1">示例<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
+<p><img alt="网络图" src="../../images/network.png" /></p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">JavaScript</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf8&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://code.jquery.com/jquery-1.10.2.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf8&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://yanglab.hzau.edu.cn/static/js/cytoscape.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:1350px;height:1000px;&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;cy&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="c1">//核心点</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A05G05421&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A05G05421&quot;</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="o">:</span> <span class="mf">0.1</span> <span class="p">},</span> <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;background-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#D53A35&quot;</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="c1">//其余点</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A11G18786&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A11G18786&quot;</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="o">:</span> <span class="mf">0</span> <span class="p">},</span> <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;background-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#2F4554&quot;</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A13G11196&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A13G11196&quot;</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="o">:</span> <span class="mf">0</span> <span class="p">},</span> <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;background-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#2F4554&quot;</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D03G07836&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D03G07836&quot;</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="o">:</span> <span class="mf">0</span> <span class="p">},</span> <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;background-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#2F4554&quot;</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D05G15276&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D05G15276&quot;</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="o">:</span> <span class="mf">0</span> <span class="p">},</span> <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;background-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#2F4554&quot;</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D11G03886&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D11G03886&quot;</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="o">:</span> <span class="mf">0</span> <span class="p">},</span> <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;background-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#2F4554&quot;</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D13G10121&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D13G10121&quot;</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="o">:</span> <span class="mf">0</span> <span class="p">},</span> <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;background-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#2F4554&quot;</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="c1">//边</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A05G05421&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A11G18786&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9422</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A05G05421&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A13G11196&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9422</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A05G05421&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D03G07836&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9409</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A05G05421&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D05G15276&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9449</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A05G05421&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D11G03886&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9477</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A05G05421&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D13G10121&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9482</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A11G18786&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A13G11196&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9638</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A11G18786&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D13G10121&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9623</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A13G11196&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D05G15276&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9558</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A13G11196&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D13G10121&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9871</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D05G15276&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D11G03886&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9537</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D05G15276&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D13G10121&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9729</span> <span class="p">}</span> <span class="p">}</span>
+    <span class="p">]</span>
+
+    <span class="kd">var</span> <span class="nx">cy</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">cy</span> <span class="o">=</span> <span class="nx">cytoscape</span><span class="p">({</span>
+      <span class="nx">container</span><span class="o">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;cy&#39;</span><span class="p">),</span>
+      <span class="nx">layout</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;cose&#39;</span><span class="p">,</span>
+        <span class="nx">idealEdgeLength</span><span class="o">:</span> <span class="mf">100</span><span class="p">,</span>
+        <span class="nx">nodeOverlap</span><span class="o">:</span> <span class="mf">20</span><span class="p">,</span>
+        <span class="nx">refresh</span><span class="o">:</span> <span class="mf">20</span><span class="p">,</span>
+        <span class="nx">fit</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">padding</span><span class="o">:</span> <span class="mf">30</span><span class="p">,</span>
+        <span class="nx">randomize</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nx">componentSpacing</span><span class="o">:</span> <span class="mf">100</span><span class="p">,</span>
+        <span class="nx">nodeRepulsion</span><span class="o">:</span> <span class="mf">400000</span><span class="p">,</span>
+        <span class="nx">edgeElasticity</span><span class="o">:</span> <span class="mf">100</span><span class="p">,</span>
+        <span class="nx">nestingFactor</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>
+        <span class="nx">gravity</span><span class="o">:</span> <span class="mf">80</span><span class="p">,</span>
+        <span class="nx">numIter</span><span class="o">:</span> <span class="mf">1000</span><span class="p">,</span>
+        <span class="nx">initialTemp</span><span class="o">:</span> <span class="mf">200</span><span class="p">,</span>
+        <span class="nx">coolingFactor</span><span class="o">:</span> <span class="mf">0.95</span><span class="p">,</span>
+        <span class="nx">minTemp</span><span class="o">:</span> <span class="mf">1.0</span>
+      <span class="p">},</span>
+      <span class="nx">style</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;selector&quot;</span><span class="o">:</span> <span class="s2">&quot;core&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;selection-box-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#AAD8FF&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;selection-box-border-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#8BB0D0&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;selection-box-opacity&quot;</span><span class="o">:</span> <span class="s2">&quot;0.5&quot;</span>
+        <span class="p">}</span>
+      <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;selector&quot;</span><span class="o">:</span> <span class="s2">&quot;node&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;width&quot;</span><span class="o">:</span> <span class="s2">&quot;mapData(score, 0, 0.1, 15, 40)&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;height&quot;</span><span class="o">:</span> <span class="s2">&quot;mapData(score, 0, 0.1, 15, 40)&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="s2">&quot;data(name)&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;font-size&quot;</span><span class="o">:</span> <span class="s2">&quot;5px&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;text-valign&quot;</span><span class="o">:</span> <span class="s2">&quot;center&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;text-halign&quot;</span><span class="o">:</span> <span class="s2">&quot;center&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;text-outline-width&quot;</span><span class="o">:</span> <span class="s2">&quot;1px&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;#fff&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;overlay-padding&quot;</span><span class="o">:</span> <span class="s2">&quot;6px&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;z-index&quot;</span><span class="o">:</span> <span class="s2">&quot;10&quot;</span>
+        <span class="p">}</span>
+      <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;selector&quot;</span><span class="o">:</span> <span class="s2">&quot;node[?attr]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;shape&quot;</span><span class="o">:</span> <span class="s2">&quot;rectangle&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;background-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#aaa&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;text-outline-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#aaa&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;width&quot;</span><span class="o">:</span> <span class="s2">&quot;16px&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;height&quot;</span><span class="o">:</span> <span class="s2">&quot;16px&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;font-size&quot;</span><span class="o">:</span> <span class="s2">&quot;6px&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;z-index&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span>
+        <span class="p">}</span>
+      <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;selector&quot;</span><span class="o">:</span> <span class="s2">&quot;node[?query]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;background-clip&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;background-fit&quot;</span><span class="o">:</span> <span class="s2">&quot;contain&quot;</span>
+        <span class="p">}</span>
+      <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;selector&quot;</span><span class="o">:</span> <span class="s2">&quot;node:selected&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;border-width&quot;</span><span class="o">:</span> <span class="s2">&quot;6px&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;border-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#AAD8FF&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;border-opacity&quot;</span><span class="o">:</span> <span class="s2">&quot;0.5&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;background-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#77828C&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;text-outline-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#77828C&quot;</span>
+        <span class="p">}</span>
+      <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;selector&quot;</span><span class="o">:</span> <span class="s2">&quot;edge&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;curve-style&quot;</span><span class="o">:</span> <span class="s2">&quot;haystack&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;haystack-radius&quot;</span><span class="o">:</span> <span class="s2">&quot;0.5&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;opacity&quot;</span><span class="o">:</span> <span class="s2">&quot;0.6&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;line-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#bbb&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;overlay-padding&quot;</span><span class="o">:</span> <span class="s2">&quot;3px&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;width&quot;</span><span class="o">:</span> <span class="mf">0.6</span>
+        <span class="p">}</span>
+      <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;selector&quot;</span><span class="o">:</span> <span class="s2">&quot;node.unhighlighted&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;opacity&quot;</span><span class="o">:</span> <span class="s2">&quot;0.2&quot;</span>
+        <span class="p">}</span>
+      <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;selector&quot;</span><span class="o">:</span> <span class="s2">&quot;edge.unhighlighted&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;opacity&quot;</span><span class="o">:</span> <span class="s2">&quot;0.05&quot;</span>
+        <span class="p">}</span>
+      <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;selector&quot;</span><span class="o">:</span> <span class="s2">&quot;.highlighted&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;z-index&quot;</span><span class="o">:</span> <span class="s2">&quot;999999&quot;</span>
+        <span class="p">}</span>
+      <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;selector&quot;</span><span class="o">:</span> <span class="s2">&quot;node.highlighted&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;border-width&quot;</span><span class="o">:</span> <span class="s2">&quot;6px&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;border-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#AAD8FF&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;border-opacity&quot;</span><span class="o">:</span> <span class="s2">&quot;0.5&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;background-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#394855&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;text-outline-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#394855&quot;</span>
+        <span class="p">}</span>
+      <span class="p">}],</span>
+      <span class="nx">elements</span><span class="o">:</span> <span class="nx">data</span>
+    <span class="p">});</span>
+  <span class="p">})</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Vue</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="c">&lt;!-- npm install --save cytoscape --&gt;</span>
+<span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;cy&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:1350px;height:1000px;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="k">import</span> <span class="nx">cytoscape</span> <span class="k">from</span> <span class="s1">&#39;cytoscape&#39;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;example&#39;</span><span class="p">,</span>
+  <span class="nx">components</span><span class="o">:</span> <span class="p">{},</span>
+  <span class="nx">data</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">plotData</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A05G05421&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A05G05421&quot;</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="o">:</span> <span class="mf">0.1</span> <span class="p">},</span> <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;background-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#D53A35&quot;</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A11G18786&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A11G18786&quot;</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="o">:</span> <span class="mf">0</span> <span class="p">},</span> <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;background-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#2F4554&quot;</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A13G11196&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A13G11196&quot;</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="o">:</span> <span class="mf">0</span> <span class="p">},</span> <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;background-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#2F4554&quot;</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D03G07836&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D03G07836&quot;</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="o">:</span> <span class="mf">0</span> <span class="p">},</span> <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;background-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#2F4554&quot;</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D05G15276&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D05G15276&quot;</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="o">:</span> <span class="mf">0</span> <span class="p">},</span> <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;background-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#2F4554&quot;</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D11G03886&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D11G03886&quot;</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="o">:</span> <span class="mf">0</span> <span class="p">},</span> <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;background-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#2F4554&quot;</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D13G10121&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D13G10121&quot;</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="o">:</span> <span class="mf">0</span> <span class="p">},</span> <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;background-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#2F4554&quot;</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A05G05421&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A11G18786&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9422</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A05G05421&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A13G11196&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9422</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A05G05421&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D03G07836&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9409</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A05G05421&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D05G15276&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9449</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A05G05421&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D11G03886&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9477</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A05G05421&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D13G10121&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9482</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A11G18786&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A13G11196&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9638</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A11G18786&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D13G10121&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9623</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A13G11196&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D05G15276&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9558</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_A13G11196&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D13G10121&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9871</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D05G15276&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D11G03886&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9537</span> <span class="p">}</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D05G15276&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;Ghi_D13G10121&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="mf">0.9729</span> <span class="p">}</span> <span class="p">}</span>
+    <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">mounted</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$nextTick</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">draw</span><span class="p">()</span>
+    <span class="p">})</span>
+  <span class="p">},</span>
+  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">draw</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">cy</span> <span class="o">=</span> <span class="nx">cytoscape</span><span class="p">({</span>
+        <span class="nx">container</span><span class="o">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;cy&#39;</span><span class="p">),</span>
+        <span class="nx">layout</span><span class="o">:</span> <span class="p">{</span>
+          <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;cose&#39;</span><span class="p">,</span>
+          <span class="nx">idealEdgeLength</span><span class="o">:</span> <span class="mf">100</span><span class="p">,</span>
+          <span class="nx">nodeOverlap</span><span class="o">:</span> <span class="mf">20</span><span class="p">,</span>
+          <span class="nx">refresh</span><span class="o">:</span> <span class="mf">20</span><span class="p">,</span>
+          <span class="nx">fit</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="nx">padding</span><span class="o">:</span> <span class="mf">30</span><span class="p">,</span>
+          <span class="nx">randomize</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="nx">componentSpacing</span><span class="o">:</span> <span class="mf">100</span><span class="p">,</span>
+          <span class="nx">nodeRepulsion</span><span class="o">:</span> <span class="mf">400000</span><span class="p">,</span>
+          <span class="nx">edgeElasticity</span><span class="o">:</span> <span class="mf">100</span><span class="p">,</span>
+          <span class="nx">nestingFactor</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>
+          <span class="nx">gravity</span><span class="o">:</span> <span class="mf">80</span><span class="p">,</span>
+          <span class="nx">numIter</span><span class="o">:</span> <span class="mf">1000</span><span class="p">,</span>
+          <span class="nx">initialTemp</span><span class="o">:</span> <span class="mf">200</span><span class="p">,</span>
+          <span class="nx">coolingFactor</span><span class="o">:</span> <span class="mf">0.95</span><span class="p">,</span>
+          <span class="nx">minTemp</span><span class="o">:</span> <span class="mf">1.0</span>
+        <span class="p">},</span>
+        <span class="nx">style</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;core&#39;</span><span class="p">,</span>
+            <span class="nx">style</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s1">&#39;selection-box-color&#39;</span><span class="o">:</span> <span class="s1">&#39;#AAD8FF&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;selection-box-border-color&#39;</span><span class="o">:</span> <span class="s1">&#39;#8BB0D0&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;selection-box-opacity&#39;</span><span class="o">:</span> <span class="s1">&#39;0.5&#39;</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;node&#39;</span><span class="p">,</span>
+            <span class="nx">style</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">width</span><span class="o">:</span> <span class="s1">&#39;mapData(score, 0, 0.1, 15, 40)&#39;</span><span class="p">,</span>
+              <span class="nx">height</span><span class="o">:</span> <span class="s1">&#39;mapData(score, 0, 0.1, 15, 40)&#39;</span><span class="p">,</span>
+              <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;data(name)&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;font-size&#39;</span><span class="o">:</span> <span class="s1">&#39;5px&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;text-valign&#39;</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;text-halign&#39;</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;text-outline-width&#39;</span><span class="o">:</span> <span class="s1">&#39;1px&#39;</span><span class="p">,</span>
+              <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#fff&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;overlay-padding&#39;</span><span class="o">:</span> <span class="s1">&#39;6px&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;z-index&#39;</span><span class="o">:</span> <span class="s1">&#39;10&#39;</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;node[?attr]&#39;</span><span class="p">,</span>
+            <span class="nx">style</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">shape</span><span class="o">:</span> <span class="s1">&#39;rectangle&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;background-color&#39;</span><span class="o">:</span> <span class="s1">&#39;#aaa&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;text-outline-color&#39;</span><span class="o">:</span> <span class="s1">&#39;#aaa&#39;</span><span class="p">,</span>
+              <span class="nx">width</span><span class="o">:</span> <span class="s1">&#39;16px&#39;</span><span class="p">,</span>
+              <span class="nx">height</span><span class="o">:</span> <span class="s1">&#39;16px&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;font-size&#39;</span><span class="o">:</span> <span class="s1">&#39;6px&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;z-index&#39;</span><span class="o">:</span> <span class="s1">&#39;1&#39;</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;node[?query]&#39;</span><span class="p">,</span>
+            <span class="nx">style</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s1">&#39;background-clip&#39;</span><span class="o">:</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;background-fit&#39;</span><span class="o">:</span> <span class="s1">&#39;contain&#39;</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;node:selected&#39;</span><span class="p">,</span>
+            <span class="nx">style</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s1">&#39;border-width&#39;</span><span class="o">:</span> <span class="s1">&#39;6px&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;border-color&#39;</span><span class="o">:</span> <span class="s1">&#39;#AAD8FF&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;border-opacity&#39;</span><span class="o">:</span> <span class="s1">&#39;0.5&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;background-color&#39;</span><span class="o">:</span> <span class="s1">&#39;#77828C&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;text-outline-color&#39;</span><span class="o">:</span> <span class="s1">&#39;#77828C&#39;</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;edge&#39;</span><span class="p">,</span>
+            <span class="nx">style</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s1">&#39;curve-style&#39;</span><span class="o">:</span> <span class="s1">&#39;haystack&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;haystack-radius&#39;</span><span class="o">:</span> <span class="s1">&#39;0.5&#39;</span><span class="p">,</span>
+              <span class="nx">opacity</span><span class="o">:</span> <span class="s1">&#39;0.6&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;line-color&#39;</span><span class="o">:</span> <span class="s1">&#39;#bbb&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;overlay-padding&#39;</span><span class="o">:</span> <span class="s1">&#39;3px&#39;</span><span class="p">,</span>
+              <span class="nx">width</span><span class="o">:</span> <span class="mf">0.6</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;node.unhighlighted&#39;</span><span class="p">,</span>
+            <span class="nx">style</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">opacity</span><span class="o">:</span> <span class="s1">&#39;0.2&#39;</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;edge.unhighlighted&#39;</span><span class="p">,</span>
+            <span class="nx">style</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">opacity</span><span class="o">:</span> <span class="s1">&#39;0.05&#39;</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;.highlighted&#39;</span><span class="p">,</span>
+            <span class="nx">style</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s1">&#39;z-index&#39;</span><span class="o">:</span> <span class="s1">&#39;999999&#39;</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;node.highlighted&#39;</span><span class="p">,</span>
+            <span class="nx">style</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s1">&#39;border-width&#39;</span><span class="o">:</span> <span class="s1">&#39;6px&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;border-color&#39;</span><span class="o">:</span> <span class="s1">&#39;#AAD8FF&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;border-opacity&#39;</span><span class="o">:</span> <span class="s1">&#39;0.5&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;background-color&#39;</span><span class="o">:</span> <span class="s1">&#39;#394855&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;text-outline-color&#39;</span><span class="o">:</span> <span class="s1">&#39;#394855&#39;</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nx">elements</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">plotData</span>
+      <span class="p">})</span>
+      <span class="nx">cy</span><span class="p">.</span><span class="nx">minZoom</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+      <span class="nx">cy</span><span class="p">.</span><span class="nx">maxZoom</span><span class="p">(</span><span class="mf">3</span><span class="p">)</span>
+      <span class="nx">cy</span><span class="p">.</span><span class="nx">viewport</span><span class="p">({</span>
+        <span class="nx">zoom</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+        <span class="nx">pan</span><span class="o">:</span> <span class="p">{</span> <span class="nx">x</span><span class="o">:</span> <span class="mf">200</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mf">200</span> <span class="p">}</span>
+      <span class="p">})</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+</div>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../phylotree/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Phylotree.js(绘制进化树)" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Phylotree.js(绘制进化树)
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../gtex_viz/" class="md-footer__link md-footer__link--next" aria-label="Next: gtex-viz(带聚类树的热图)" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              gtex-viz(带聚类树的热图)
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "search.highlight", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.f8263e09.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      
+    
+  </body>
+</html>
